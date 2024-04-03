@@ -5,13 +5,14 @@ from fpylll.algorithms.bkz2 import BKZReduction
 from g6k.siever import Siever
 from g6k.siever_params import SieverParams
 from fpylll.tools.bkz_stats import dummy_tracer
-from g6k.algorithms.bkz import pump_n_jump_bkz_tour, default_dim4free_fun, dim4free_wrapper
+from g6k.algorithms.bkz_output_each_pump_cost import pump_n_jump_bkz_tour, default_dim4free_fun, dim4free_wrapper
 from g6k.algorithms.pump import pump
 from fpylll.util import gaussian_heuristic
 import time
 import psutil
 import os
 
+from draw_plot_pump_in_each_pnjbkz import draw_plot_pump_in_pnjbkz
 
 #d4f(B): postive 
 def theo_dim4free2_in_B(rr):
@@ -23,7 +24,7 @@ def theo_dim4free2_in_B(rr):
             return f
     return 0
 
-def one_tour_pnjbkz_cost_test(blocksize, jump, n = 180, gpus = 2, threads = 32, extra_dim4free = 12, dim4free_fun = "default_dim4free_fun", pump_params = {"down_sieve": True }):
+def one_tour_pnjbkz_cost_test(index, blocksize, jump, n = 180, gpus = 2, threads = 32, extra_dim4free = 12, dim4free_fun = "default_dim4free_fun", pump_params = {"down_sieve": True }):
     A, bkz = load_svpchallenge_and_randomize(n, s=0, seed=0)
 
     params = SieverParams(gpus = gpus, threads = threads) #, saturation_ratio = 0.375, db_size_factor = 2.77, max_nr_buckets = 0
@@ -36,11 +37,24 @@ def one_tour_pnjbkz_cost_test(blocksize, jump, n = 180, gpus = 2, threads = 32, 
         bkz(par)
         RAM_cost = 0.
     else:
-        RAM_cost = pump_n_jump_bkz_tour(g6k, dummy_tracer, blocksize, jump=jump,
+        T_pumps, indices,RAM_cost = pump_n_jump_bkz_tour(g6k, dummy_tracer, blocksize, jump=jump,
                                      extra_dim4free=extra_dim4free,
                                      dim4free_fun=dim4free_fun,
                                      pump_params=pump_params)
-    return time.time()-T0, RAM_cost
+        T_BKZ = time.time()-T0
+        path_name = "each_pump_cost_in_pnjbkz"
+        try:
+            os.mkdir(path_name)
+        except FileExistsError:
+            pass
+        file_name = path_name+"/pnjbkz-(%d,%d,%d)-%d.txt" %(g6k.full_n,blocksize,jump,index)
+        fn = open(file_name,"w")
+        fn.write("indices:"+str(indices)+"\n")
+        fn.write("pump cost:"+str(T_pumps)+"\n")
+        fig_name = path_name+"/pnjbkz-(%d,%d,%d)-%d.png" %(g6k.full_n,blocksize,jump,index)
+        draw_plot_pump_in_pnjbkz(indices,T_pumps,fig_name)
+        
+    return T_BKZ, RAM_cost
 
 def one_pump_cost(sieve_dim, n=180,gpus = 2, threads = 32, llb = 0):
     A, bkz = load_svpchallenge_and_randomize(n, s=0, seed=0)
@@ -55,7 +69,7 @@ def one_pump_cost(sieve_dim, n=180,gpus = 2, threads = 32, llb = 0):
     return time.time()-T0, RAM_cost
 
 def PnjBKZCostTest(n=180,tours = 1, gpus = 2, threads = 32):
-    print("Start PnjBKZ cost test...")
+    print("Start PnjBKZ cost test with dim = %d..." %n)
     AvgTs = {}
     AvgRAMs = {}
     A, bkz = load_svpchallenge_and_randomize(n, s=0, seed=0)
@@ -65,11 +79,12 @@ def PnjBKZCostTest(n=180,tours = 1, gpus = 2, threads = 32):
     print("{0: <10} {1: <10} {2: <10} {3: <10} {4: <10}".format("beta", "jump","sieve_dim","AvgT/s","AvgRAM/GB"))
     
     for blocksize in range(51,120,2):
-        for jump in range(int(min(theo_dim4free2_in_B(rr),dim4free_wrapper(default_dim4free_fun,blocksize)/2.)), int(max(theo_dim4free2_in_B(rr),dim4free_wrapper(default_dim4free_fun,blocksize)/2.))+1):
+        #int(min(theo_dim4free2_in_B(rr),dim4free_wrapper(default_dim4free_fun,blocksize)/2.)),
+        for jump in range(1, int(max(theo_dim4free2_in_B(rr),dim4free_wrapper(default_dim4free_fun,blocksize)/2.))+1):
             Ts = []
             RAMs = []
             for _ in range(tours):
-                TR = one_tour_pnjbkz_cost_test(blocksize, jump, n = n, gpus = gpus, threads = threads)
+                TR = one_tour_pnjbkz_cost_test(_+1,blocksize, jump, n = n, gpus = gpus, threads = threads)
                 Ts.append(TR[0])
                 RAMs.append(TR[1])
             AvgTs[(blocksize,jump)] = round(sum(Ts)/tours,2)
@@ -86,13 +101,13 @@ def PnjBKZCostTest(n=180,tours = 1, gpus = 2, threads = 32):
 
 
 def PumpCostTest(n=180,tours = 1, gpus = 2, threads = 32):
-    print("Start Pump cost test...")
+    print("Start Pump cost test with dim = %d..." %n)
     AvgTs = {}
     AvgRAMs = {}
     
     print("{0: <10} {1: <10} {2: <10} {3: <10} {4: <10}".format("kappa", "dim","sieve_dim","AvgT/s","AvgRAM/GB"))
-    # for sieve_dim in range(51,136,2):
-    for sieve_dim in range(129,136,2):
+    for sieve_dim in range(51,120,2):
+    # for sieve_dim in range(129,136,2):
         Ts = []
         RAMs = []
         for _ in range(tours):
@@ -111,5 +126,6 @@ def PumpCostTest(n=180,tours = 1, gpus = 2, threads = 32):
 
     
 if __name__ =="__main__":
-    PumpCostTest( gpus = 2, threads = 32)
-    PnjBKZCostTest( gpus = 2, threads = 32)
+    for n in range(150,180,10):
+        # PumpCostTest(n=n, gpus = 2, threads = 32)
+        PnjBKZCostTest( n=n, gpus = 2, threads = 32)

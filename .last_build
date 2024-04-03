@@ -1,13 +1,259 @@
 Git status: 
-commit 4774edd22538f4ddb73f68a4ed5f49c37b4818a2
+commit e92df48fae1d66e06dadcad9d71ff01248c2ed59
 Author: summwer <15091002@buaa.edu.cn>
 
-    update implement_lwe_instance
+    fix compile-environment
 
+  (commit or discard the untracked or modified content in submodules)
 	modified:   .last_build
-	modified:   README.rst
+	modified:   Makefile.local
+	modified:   ProPnjBKZ_for_lwe.py
 	modified:   bootstrap.sh
-	modified:   install-dependencies.sh
+	modified:   build/temp.linux-x86_64-3.8/g6k/siever.o
+	modified:   build/temp.linux-x86_64-3.8/g6k/siever_params.o
+	modified:   cuda/GPUStreamGeneral.o
+	modified:   g6k-fpylll (modified content)
+	modified:   g6k/algorithms/__pycache__/bkz.cpython-38.pyc
+	modified:   g6k/algorithms/__pycache__/pump.cpython-38.pyc
+	modified:   g6k/algorithms/pump.py
+	modified:   g6k/siever.cpp
+	modified:   g6k/siever.cpython-38-x86_64-linux-gnu.so
+	modified:   g6k/siever_params.cpp
+	modified:   g6k/siever_params.cpython-38-x86_64-linux-gnu.so
+	modified:   g6k/utils/__pycache__/lwe_estimation.cpython-38.pyc
+	modified:   g6k/utils/__pycache__/util.cpython-38.pyc
+	modified:   implement_low_dim_dd.sh
+	modified:   implement_lwe_instance_ds.sh
+	modified:   kernel/bgj1_sieve.o
+	modified:   kernel/control.o
+	modified:   kernel/gpu_sieve.o
+	modified:   kernel/libG6K.so
+	modified:   kernel/sieving.o
+	modified:   kernel/triple_sieve.o
+	modified:   kernel/triple_sieve_mt.o
+	modified:   lwe_instance.py
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/48-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/48-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/48-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/48-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/49-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/49-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/49-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/49-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/50-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/50-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/50-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/50-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/51-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/51-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/51-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/51-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/52-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/52-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/52-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/52-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/54-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/54-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/54-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/54-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/55-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/55-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/55-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/55-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/56-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/56-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/56-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/56-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/57-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/57-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/57-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/57-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/58-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/58-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/58-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/58-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/59-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/59-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/59-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/59-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/60-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/60-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/60-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/60-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/61-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/61-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/61-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/bssa(32+2gpus)/61-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/48-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/48-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/48-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/48-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/49-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/49-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/49-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/49-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/50-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/50-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/50-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/50-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/51-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/51-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/51-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/51-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/52-015-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/52-015-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/52-015-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/52-015-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/54-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/54-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/54-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/54-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/55-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/55-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/55-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/55-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/56-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/56-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/56-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/56-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/57-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/57-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/57-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/57-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/58-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/58-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/58-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/58-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/59-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/59-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/59-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/59-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/60-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/60-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/60-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/60-010-4.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/61-010-1.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/61-010-2.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/61-010-3.log
+	modified:   lwechal-instance-test-dd/d4f-default-g6k/enumbs(32+2gpus)/61-010-4.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/48-015-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/49-015-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/50-015-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/51-015-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/52-015-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/54-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/55-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/56-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/57-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/58-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/59-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/60-010-1.log
+	modified:   lwechal-instance-test-dd/default_g6k_main(32+2gpus)/61-010-1.log
+	modified:   lwechallenge/040-025-last-pump.txt
+	modified:   lwechallenge/040-025-midmat.txt
+	modified:   lwechallenge/040-030-last-pump.txt
+	modified:   lwechallenge/040-030-midmat.txt
+	modified:   lwechallenge/045-020-last-pump.txt
+	modified:   lwechallenge/045-020-midmat.txt
+	modified:   lwechallenge/048-015-last-pump.txt
+	modified:   lwechallenge/048-015-midmat-default-g6k.txt
+	modified:   lwechallenge/048-015-midmat.txt
+	modified:   lwechallenge/048-015-solution.txt
+	modified:   lwechallenge/049-015-last-pump.txt
+	modified:   lwechallenge/049-015-midmat-default-g6k.txt
+	modified:   lwechallenge/049-015-midmat.txt
+	modified:   lwechallenge/050-015-last-pump.txt
+	modified:   lwechallenge/050-015-midmat-default-g6k.txt
+	modified:   lwechallenge/050-015-midmat.txt
+	modified:   lwechallenge/050-015-solution.txt
+	modified:   lwechallenge/051-015-last-pump.txt
+	modified:   lwechallenge/051-015-midmat.txt
+	modified:   lwechallenge/051-015-solution.txt
+	modified:   lwechallenge/052-015-last-pump.txt
+	modified:   lwechallenge/052-015-midmat.txt
+	modified:   lwechallenge/052-015-solution.txt
+	modified:   lwechallenge/054-010-last-pump.txt
+	modified:   lwechallenge/054-010-midmat.txt
+	modified:   lwechallenge/055-010-last-pump.txt
+	modified:   lwechallenge/055-010-midmat.txt
+	modified:   lwechallenge/056-010-last-pump.txt
+	modified:   lwechallenge/056-010-midmat.txt
+	modified:   lwechallenge/056-010-solution.txt
+	modified:   lwechallenge/057-010-last-pump.txt
+	modified:   lwechallenge/057-010-midmat.txt
+	modified:   lwechallenge/057-010-solution.txt
+	modified:   lwechallenge/058-010-last-pump.txt
+	modified:   lwechallenge/058-010-midmat.txt
+	modified:   lwechallenge/059-010-last-pump.txt
+	modified:   lwechallenge/059-010-midmat.txt
+	modified:   lwechallenge/060-010-last-pump.txt
+	modified:   lwechallenge/060-010-midmat.txt
+	modified:   lwechallenge/060-010-solution.txt
+	modified:   lwechallenge/061-010-last-pump.txt
+	modified:   lwechallenge/061-010-midmat.txt
+	modified:   lwechallenge/061-010-solution.txt
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 9.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 12, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=12,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 95, Jump = 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 100, Jump = 6, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=100,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 100, Jump = 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 80, Jump = 6, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=6,Pumpdown=True,Blocksize=80,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 80, Jump = 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 85, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=85,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 85, Jump = 9.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 90, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=90,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 90, Jump = 9.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Comparing figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 1.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 12.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 13.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio figure, n=75, alpha = 005, dimension = 252, Blocksize = 95, Jump = 9, #Current Tours= 6.png
+	modified:   simulator-test/pro-bkz-tests/gs-lengths-simulator/n=75,alpha=005,jump=9,Pumpdown=True,Blocksize=95,Tours=13d=252,/Ratio with different tours, Dimension = 252, Blocksize = 95, Jump = 9.png
+	modified:   strategy_gen/framework/cost.cpp
+	modified:   strategy_gen/framework/cost.h
+	modified:   strategy_gen/framework/libest.so
+	modified:   strategy_gen/framework/utils.cpp
+	modified:   strategy_gen/framework/utils.h
+	modified:   strategy_gen/strategy_gen.cpp
+	modified:   strategy_gen/strategy_gen.cpython-38-x86_64-linux-gnu.so
+	modified:   strategy_simulation.py
 =================
-rebuild.sh --noyr -j 30
+rebuild.sh 
 =================

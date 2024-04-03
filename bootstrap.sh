@@ -99,8 +99,8 @@ $PIP install -r requirements.txt
 $PIP install -r suggestions.txt
 $PYTHON setup.py clean
 $PYTHON setup.py build_ext $jobs || $PYTHON setup.py build_ext
-python -m pip install .
-#$PYTHON setup.py install || exit 1 old
+$PYTHON -m pip install .
+#$PYTHON -m pip install . || exit 1 old
 cd ..
 
 # Install parallel-hashmap

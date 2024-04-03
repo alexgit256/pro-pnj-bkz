@@ -38,7 +38,8 @@ from fpylll import BKZ as fplll_bkz
 from fpylll.algorithms.bkz2 import BKZReduction
 from fpylll.tools.quality import basis_quality
 
-from g6k.algorithms.bkz import pump_n_jump_bkz_tour
+# from g6k.algorithms.bkz import pump_n_jump_bkz_tour
+from g6k.algorithms.bkz_ds import pump_n_jump_bkz_tour
 from g6k.algorithms.pump import pump
 # from g6k.algorithms.pump_cpu import pump
 from g6k.siever import Siever

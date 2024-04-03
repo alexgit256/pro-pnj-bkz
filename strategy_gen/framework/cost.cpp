@@ -145,6 +145,63 @@ pair<double,double> COST::get_k1_k2_pnj_qd(int beta,bool sieve){
 
 
 
+//threads = 32, gpus = 2,  pnj-bkz cost in dd precision type
+pair<double,double> COST::get_k1_k2_pnj_dd_ds(int beta,bool sieve){
+    double k1,k2;
+    if(beta >=0 and beta <10 and not sieve){
+        k1 = -1;
+        k2 = -1;
+    }
+    else if(beta>=10 and beta<=42 and not sieve){
+        // k1 = 0.03;
+        // k2 = -2.317327;
+        k1 = 0.006000;
+        k2 = 2.390000;
+    }
+    else if(beta < 50 and not sieve){
+        // k1 = 0.202385;
+        // k2 = -9.340418;
+        k1 = 0.033000;
+        k2 = 1.320000;
+    }
+    else if(beta <= 60 and sieve){
+        k1 = 0.038;
+        k2 = 7.03;
+    }
+    else if(beta <= 64 and sieve){
+        k1 = 0.050;
+        k2 = 6.31;
+    }
+    else if(beta <= 84 and sieve){
+        k1 = 0.053;
+        k2 = 6.52;
+    }
+    else if(beta <= 92 and sieve){
+        k1 = 0.137;
+        k2 = -0.54;
+    }
+    //qd float_type(lack of dd float_type data)
+    else if(beta <= 97 and sieve){
+        k1 = 0.056;
+        k2 = 7.85;
+    }
+    else if(beta <= 118 and sieve){
+        k1 = 0.215;
+        k2 = -7.61;
+    }
+    else if(beta <= 128 and sieve){
+        k1 = 0.314;
+        k2 = - 19.24;
+    }
+    else{
+        k1 = 0.368;
+        k2 = -26.15;
+    }
+    return make_pair(k1,k2);
+}
+
+
+
 //threads = 32, gpus = 2, pump cost paramter in qd precision type
 pair<double,double> COST::get_k1_k2_pump_qd(int beta){
     double k1,k2;
@@ -284,13 +341,13 @@ pair<double,double> COST::get_k1_k2_pump_dd(int beta){
         k1 = 0.064883;
         k2 = - 0.172902;
     }
-    else if(beta <= 109){
+    else if(beta <= 110){
         k1 = 0.196298;
         k2 = - 11.518570;
     }
-    else if(beta <= 124){
-        k1 = 0.260275;
-        k2 =  - 18.491171;
+    else if(beta <= 131){
+        k1 = 0.277686;
+        k2 =  -20.507189;
     }
     else{
         k1 = 0.359131;
@@ -309,20 +366,24 @@ double COST::practical_bkz_cost_dd(int d,int beta,int jump){
     // f = f + extra_dim4free;
     int f = 0;
     int extra_dim4free =12;
-    // bool sieve;
+    bool sieve;
     if(beta < 50){
-        // sieve = false;
+        sieve = false;
         f = 0;
         return practical_bkz_cost_qd(d, beta, jump);
     }
     else{
-        // sieve = true;  
+        sieve = true;  
         // f = get_f_for_pnjbkz(params, beta);
         f = get_f_for_pnjbkz(params, beta);
     }
     if(beta-f<=60)
         return practical_bkz_cost_qd(d, beta, jump);
-    pair<double,double> k = get_k1_k2_pump_dd(beta-f); // threads = 20
+    // threads = 32, gpus =  2
+    // pair<double,double> k = get_k1_k2_pump_dd(beta-f);
+    pair<double,double> k = get_k1_k2_pnj_dd_ds(beta-f, sieve);
+
+
     double k1 = k.first, k2 = k.second;
     double c3= 0.018, c4 = -2.24;
 
@@ -331,23 +392,26 @@ double COST::practical_bkz_cost_dd(int d,int beta,int jump){
     // else
     //if(c3*d+c4 > 1)
     // cout<<log2(d-beta+2*f+extra_dim4free)<<endl;
-    // int indices_num = 2*(floor((f+extra_dim4free)/jump)+1) + (floor((d-beta-extra_dim4free)/jump)+1) + 1;
-    // int indices_num = 2*(floor((f+extra_dim4free)/jump)+1) + (floor((d-beta-extra_dim4free)/jump)+1) + 1;
+    int full_indices_num = 2*(f+extra_dim4free) + (d-beta-extra_dim4free) + 1;
+    int indices_num = 2*(floor((f+extra_dim4free)/jump)) + (floor((d-beta-extra_dim4free)/jump)) + 1;
+    // cout<<"f = "<<f<<endl;
+    // cout<<"k1 = "<<k1 <<", k2 = "<<k2<<", "<<"c3*d+c4 = "<<c3*d+c4<<endl;
+    // cout<< "full_indices_num = "<< full_indices_num <<", indices_num = "<< indices_num<<endl;
     if(c3*d+c4>=1)
-        return (k1*(beta-f)+k2) + log2(c3*d+c4) + log2(d-beta+2*f+extra_dim4free) - log2(jump);
+        return (k1*(beta-f)+k2) + log2(c3*d+c4) - log2(full_indices_num) + log2(indices_num); //  - log2(jump); //+ log2(d-beta+2*f+extra_dim4free)
     else
-        return (k1*(beta-f)+k2) + log2(d-beta+2*f+extra_dim4free) - log2(jump);
+        return (k1*(beta-f)+k2) - log2(full_indices_num) + log2(indices_num); // + log2(d-beta+2*f+extra_dim4free)
 }
 
 
-//get pump cost in threads = 20
+//get pump cost in threads = 32, gpus =2
 pair<double,double> COST::practical_pump_cost_dd(int beta){
     //make sure not use the enum cost 
     // int f = get_f_for_pump(params, beta);
     // f = dims4free(beta);
     int beta_prime = beta;
     double secs, bits;
-    pair<double,double> k = get_k1_k2_pump_dd(beta_prime); // threads = 20
+    pair<double,double> k = get_k1_k2_pump_dd(beta_prime); // threads = 32, gpus = 2
     double k1 = k.first, k2 = k.second;
     // k = (1/71.)*((1.33)**(beta/10.));
     

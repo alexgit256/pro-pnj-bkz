@@ -621,8 +621,8 @@ int jump_upper_bound(Params params, int beta, vector<double> l){
             break;
         case 5:
             jub = min(accs_2023_d4f(slope),theo_dim4free_fun1(beta));
-            if(params.cost_model == 3)
-                jub = min(jub, min((int) floor(params.jub_ratio * beta), (int) floor((double) get_f_for_pnjbkz(params,beta)/2.)));
+            //if(params.cost_model == 3)
+            //    jub = min(jub, min((int) floor(params.jub_ratio * beta), (int) floor((double) get_f_for_pnjbkz(params,beta)/2.)));
             if(params.cost_model == 2)
                 jub = min(jub,  (int) floor((double) get_f_for_pnjbkz(params,beta)/2.));
             // jub = min(jub, (int) floor((double) get_f_for_pnjbkz(params,beta)/2.));
@@ -662,6 +662,7 @@ int get_f_for_pnjbkz(Params params, int beta){
 
 
 int get_f_for_pump(Params params, int beta, vector<double> l){
+    double slope = get_current_slope(l,0,(int) l.size());
     if(params.cost_model == 1){
         if(params.theo_pump_d4f == 1)
             return max(0,theo_dim4free_fun1(beta));
@@ -682,6 +683,8 @@ int get_f_for_pump(Params params, int beta, vector<double> l){
         if(params.practical_pump_d4f == 4)
             return max(0, theo_dim4free2_in_B(l));
             // return max(0, theo_dim4free2_in_B(l,beta));
+        if(params.practical_pump_d4f == 5)
+            return max(0, accs_2023_d4f(slope));
     }
     return 0;
 }

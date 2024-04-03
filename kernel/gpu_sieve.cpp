@@ -24,7 +24,6 @@ size_t automaxbuckets(size_t max_nr_buckets, size_t dbsize)
 // -------------------------------- PREPARE GLOBAL ----------------------- //
 
 void Siever::global_init_gpus() {
-    
     // mu_R
     std::vector<std::vector<float>> mu_R(n, std::vector<float>(n, 0.));
     for( size_t i = 0; i < n; i++ ) {
@@ -40,6 +39,7 @@ void Siever::global_init_gpus() {
             gpu_general[device][0]->global_init( mu_R, uid_hash_table.get_uid_coeffs() );
         }, devices);
 }
+
 
 void Siever::dh_init_gpus() {
 
