@@ -449,12 +449,13 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
                 gbeta = ssbeta;
                 break;
             }
-                
+
             double G_tmp_min = params.max_num; 
 
             if(not params.bssa_tradition)
                 goal_quality = max_tour_for_pnjbkz_beta(bs, beta);//1: G2, 2: slope
             
+
             bool flag = true;
             
             for(int beta_alg = beta+1; beta_alg < min(d,params.max_dim); beta_alg++){
@@ -465,6 +466,7 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
                     
                     pair<double, double> GB_alg = cost->bkz_cost(d,beta_alg,j,params.cost_model);
 
+                   
                     // int f = get_f_for_pnjbkz(params,beta_alg);
                     int jub = jump_upper_bound(params,beta_alg,bs.l);
 
@@ -480,13 +482,12 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
                     if(beta_alg < 55 && j > 1)
                         continue;
 
-
-
                     if(params.verbose){
                         // printf("jub = %d", jub);
                         printf("\r Blocksize strategy selection process: %4d --> %4d --> (%4d, %4d) --> %4d --> %4d", sbeta,ssbeta,beta_alg,j,beta,gbeta);
                     }
 
+    
                     // if(params.cost_model == 1 and j >= 0.1 * beta)
                     //     continue;
                     // else{

@@ -89,7 +89,7 @@ struct Params{
     //params for last pump
     // bool progressive_sieve =  true; 
     int theo_pump_d4f = 2; //the dim4free function for last pump in theoretical cost mode. 1: theo d4f1; 2: theo d4f2; 3: d4f in default g6k
-    int practical_pump_d4f = 5; //the dim4free function for last pump in prectical cost mode. 1: theo d4f1; 2: theo d4f2; 3: d4f in default g6k; 4: optimistic d4f(B); 5: accs_d4f(slope)
+    int practical_pump_d4f = 3; //the dim4free function for last pump in prectical cost mode. 1: theo d4f1; 2: theo d4f2; 3: d4f in default g6k; 4: optimistic d4f(B); 5: accs_d4f(slope)
 };
 
 

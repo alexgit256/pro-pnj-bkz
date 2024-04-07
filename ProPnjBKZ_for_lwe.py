@@ -32,7 +32,7 @@ import sys
 import time
 
 from collections import OrderedDict # noqa
-from math import log,sqrt, log2
+from math import log,sqrt, log2, floor
 
 from fpylll import BKZ as fplll_bkz
 from fpylll.algorithms.bkz2 import BKZReduction
@@ -63,6 +63,13 @@ def theo_dim4free2_in_B(rr):
         if(ghf * 4/3. >=  ((d-f)/d) * gh):
             return f
     return 0
+
+
+def accs_2023_d4f(slope):
+    f = floor(log(sqrt(4/3.))/(-1*slope/4.))
+    return f
+
+
 
 
 def lwe_kernel(arg0, params=None, seed=None):
@@ -352,7 +359,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         n_max= 143
         
         llb = d - beta_pump
-        f = max(theo_dim4free2_in_B(rr), beta_pump - n_max)
+        f = max(accs_2023_d4f(slope), beta_pump - n_max)
         
         T0_pump = time.time()
         print("Without otf, would expect solution at pump_{%d, %d, %d},n_max = %d" % (llb, beta_pump , f, n_max)) # noqa

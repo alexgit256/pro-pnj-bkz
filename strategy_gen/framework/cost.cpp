@@ -429,7 +429,7 @@ double COST::refined_pnjbkz_cost_model_dd(int d, int blocksize, int jump){
         pnjbkz_pre_cost = pow(2, 0.074 * sieve_dim + 2.747);
         pnjbkz_later_cost = pow(2, 0.068 * sieve_dim + 3.419);
     }
-    else if(82<sieve_dim and sieve_dim <=99){
+    else if(82<sieve_dim ){ //and sieve_dim <=99
         B = pow(2, 0.169 * sieve_dim - 10.018);
         first_pump_cost = pow(2, 0.194 * sieve_dim - 11.571);
         pnjbkz_pre_cost = pow(2, 0.170 * sieve_dim - 5.334);
@@ -437,8 +437,9 @@ double COST::refined_pnjbkz_cost_model_dd(int d, int blocksize, int jump){
     }
         
     double simulated_mid_cost = ((A*(f+xf) + B) + (A*(d-blocksize+f)+B))/2. *(d-blocksize-xf+1);
-
-    return first_pump_cost + pnjbkz_pre_cost * (ceil((f+xf)/jump)-1)/(f+xf-1) + pnjbkz_later_cost * (ceil((f+xf)/jump))/(f+xf) + simulated_mid_cost *  (ceil((d-blocksize-xf)/jump)+1)/(d - blocksize - xf+1);
+    double simulated_pnjbkz_cost = first_pump_cost + pnjbkz_pre_cost * (ceil((f+xf)/jump)-1)/(f+xf-1) + pnjbkz_later_cost * (ceil((f+xf)/jump))/(f+xf) + simulated_mid_cost *  (ceil((d-blocksize-xf)/jump)+1)/(d - blocksize - xf+1);
+    // cout<< first_pump_cost + pnjbkz_pre_cost * (ceil((f+xf)/jump)-1)/(f+xf-1) + pnjbkz_later_cost * (ceil((f+xf)/jump))/(f+xf) + simulated_mid_cost *  (ceil((d-blocksize-xf)/jump)+1)/(d - blocksize - xf+1) <<endl;
+    return log2(simulated_pnjbkz_cost);
 }
 
 //get pump cost in threads = 32, gpus =2
@@ -511,7 +512,7 @@ pair<double,double> COST::bkz_cost(int d, int beta,int J,int cost_model){
         return make_pair(practical_bkz_cost_qd(d,beta,J), practical_pump_cost_qd(beta).second);
     }
     else if(cost_model == 3){
-        if(50<=beta and beta <= 99)
+        if(beta>=50 and beta <= 119)
             return make_pair(refined_pnjbkz_cost_model_dd(d,beta,J), practical_pump_cost_dd(beta).second);
         else
             return make_pair(practical_bkz_cost_dd(d,beta,J), practical_pump_cost_dd(beta).second);

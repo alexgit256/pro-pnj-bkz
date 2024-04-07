@@ -589,6 +589,7 @@ int theo_dim4free2_in_B(vector<double> l){
 // }
 
 int accs_2023_d4f(double slope){
+    // cout<<(slope)<<endl;
     assert(slope < 0);
     int f = (int) floor(log(sqrt(4/3.))/(-1*slope/4.));
     assert(f>=0);
@@ -600,6 +601,7 @@ int accs_2023_d4f(double slope){
 int jump_upper_bound(Params params, int beta, vector<double> l){
     int jub = 0;
     double slope = get_current_slope(l,0,(int) l.size());
+    // print_vector(l,0,(int) l.size());
     if(beta<=50)
         return 1;
     // cout<<"params.compute_jub = "<<params.compute_jub<<endl;
@@ -761,6 +763,9 @@ int get_beta_(Params params, int beta, int jump, int d, double slope){
             //"Optimistic d4f value"
             return beta;
         }
+        else
+            return beta - d4f_gap(beta);
+
         else if(jump/(double) beta <= 0.05){
             //"Theory conservative d4f value"
             // cout<<"beta = "<<beta<<", "<< "beta - d4f_gap(beta) = "<<beta - d4f_gap(beta)<<endl;

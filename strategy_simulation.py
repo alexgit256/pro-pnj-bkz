@@ -115,8 +115,16 @@ strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",fl
 
 
 
-n = 40
-alpha = 0.030
+# n = 40
+# alpha = 0.030
+# float_type = "dd"
+# S = [(80,8,1),(81,10,1),(103,11,2),(117,11,1),(129,13,1)]
+# strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+
+
+
+n = 53
+alpha = 0.015
 float_type = "dd"
-S = [(80,8,1),(81,10,1),(103,11,2),(117,11,1),(129,13,1)]
-strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+S = [(77, 8, 1), (81, 10, 2), (102, 11, 1), (103, 11, 1), (114, 11, 1), (119, 12, 1)]
+strategy_simulation(n,alpha,S,load_lwe="lwe_instance", simulation="actual_l",float_type = float_type)
