@@ -80,8 +80,8 @@ tuple<int,int,double,double,double> progressive_dsvp_predict(vector<double> l, d
         if(not flag){
             f = get_f_for_pump(cost->params,dsvp, l);
             dsvp_prime = floor(dsvp - f);
-            p_cost = cost->pump_cost(dsvp_prime,cost_model);
-            
+            p_cost = cost->pump_cost(dsvp_prime,cost_model) ; //the pump cost contains pump-down process, which will make the cost double than a progressive sieve.
+            p_cost.first -=1;
             G_cum = log2(pow(2,G_cum)+ (pow(2,p_cost.first) + pow(2,cum_GB_BKZ.first)) * (1- cum_pr) * (psvp-pre_psvp));
             
             B_cum = log2(pow(2,B_cum)+pow(2,p_cost.second) * (1 - cum_pr) * (psvp-pre_psvp));

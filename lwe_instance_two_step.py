@@ -44,7 +44,7 @@ from g6k.algorithms.pump import pump
 from g6k.siever import Siever
 from g6k.utils.cli import parse_args, run_all, pop_prefixed_params
 from g6k.utils.stats import SieveTreeTracer, dummy_tracer
-from g6k.utils.util import load_lwe_challenge,load_lwe_challenge_mid
+from g6k.utils.util import load_lwe_instance
 
 # from g6k.utils.lwe_estimation import gsa_params, primal_lattice_basis
 from g6k.utils.lwe_estimation import gsa_params, primal_lattice_basis
@@ -138,21 +138,21 @@ def lwe_kernel(arg0, params=None, seed=None):
     dont_trace = params.pop("dummy_tracer")
     verbose = params.pop("verbose")
 
-    A, c, q = load_lwe_challenge(n=n, alpha=alpha)
+    A, c, q = load_lwe_instance(n=n, alpha=alpha)
     
     print("-------------------------")
-    print("Primal attack, LWE challenge n=%d, alpha=%.4f" % (n, alpha))
+    print("Primal attack in two-step mode, LWE challenge n=%d, alpha=%.4f" % (n, alpha))
 
     if m is None:
         try:
-            min_cost_param = gsa_params(n=A.ncols, alpha=alpha, q=q,
+            min_cost_param = gsa_params(n=A.ncols, alpha=alpha, q=q,samples=A.nrows,
                                         decouple=decouple)
             (b, s, m) = min_cost_param
         except TypeError:
             raise TypeError("No winning parameters.")
     else:
         try:
-            min_cost_param = gsa_params(n=A.ncols, alpha=alpha, q=q,
+            min_cost_param = gsa_params(n=A.ncols, alpha=alpha, q=q,samples=A.nrows,
                                         decouple=decouple)
             (b, s, _) = min_cost_param
         except TypeError:
@@ -160,14 +160,12 @@ def lwe_kernel(arg0, params=None, seed=None):
     print("Chose %d samples. Predict solution at bkz-%d + svp-%d" % (m, b, s))
     print()
 
-    # no use in having a very small b
-    b = max(b, s-65)
 
     target_norm = goal_margin * (alpha*q)**2 * m + 1
     # target_norm = max( target_norm, 0.98 * full_gh)
 
     
-    B_=load_lwe_challenge_mid(n=n, alpha=alpha)
+    # B_=load_lwe_challenge_mid(n=n, alpha=alpha)
     # if B_ is not None:
     #     B = B_
     # else: 
@@ -214,16 +212,6 @@ def lwe_kernel(arg0, params=None, seed=None):
     print("Blocksize Strategy: ", end= "")    
     print(blocksizes)
     print()
-    
-    
-    #(130,  2, 3),
-    # blocksizes = [(133,  2,  1),(134,  2,  2),(136,  2,  1),(138,  2,  1),(139,  2,  1),(141,  2,  2),(144,  2,  2),(145,  2,  1),(146,  2,  1),(148,  2,  1),(149,  2,  1),(150,  2,  1),(151, 15, 10),(152, 15,  2),(152,  2,  1),(153, 15, 10),(153, 14, 10),(153, 13, 10),(153, 12, 10),(154, 15, 10),(154, 14, 10),(154, 13, 10),(154, 12, 10),(154, 11,  9),(155, 15, 10),(155, 14, 10),(155, 13, 10),(155, 12, 10),(155, 11,  7),(156, 15, 10),(156, 14, 10),(156, 13,  8),(156,  4,  1),(157, 15, 10),(157, 14, 10),(157, 13, 10),(157, 12, 10),(157, 11, 10),(157, 10,  1),(158, 15, 10),(158, 14, 10),(158, 13, 10),(158, 12, 10),(158, 11, 10),(158, 10, 10),(158,  4,  1),(159, 15, 10),(159, 14, 10),(159, 13,  9),(159, 12,  8),(159, 11,  4),(160, 15,  9),(160, 14, 10),(160, 13,  9),(160, 12,  8),(160, 11,  3),(161, 14,  9)] #(blocksize, jump, tours) for 95-005
-    # blocksizes = [(144,  4,  1),(147,  4,  1),(153,  4,  1)]
-
-    # blocksizes = [(90,10,1)]
-
-    # blocksizes = []
-    # blocksize = 1
     
 
     for S in blocksizes:

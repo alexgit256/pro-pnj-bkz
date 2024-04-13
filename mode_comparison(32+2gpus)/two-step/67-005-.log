@@ -1,0 +1,17 @@
+-------------------------
+Primal attack in two-step mode, LWE challenge n=67, alpha=0.0050
+Chose 220 samples. Predict solution at bkz-68 + svp-100
+
+GSO precision:  dd
+||b_1|| = 20187049, target_norm = 166544
+Intial Slope = -0.07165, dim = 221, dvol = 599.0293761903453
+
+Blocksize Strategy: [(10, 1, 1), (11, 1, 1), (12, 1, 1), (13, 1, 1), (14, 1, 1), (15, 1, 1), (16, 1, 1), (17, 1, 1), (18, 1, 1), (19, 1, 1), (20, 1, 1), (21, 1, 1), (22, 1, 1), (23, 1, 1), (24, 1, 1), (25, 1, 1), (26, 1, 1), (27, 1, 1), (28, 1, 1), (29, 1, 1), (30, 1, 1), (31, 1, 1), (32, 1, 1), (33, 1, 1), (34, 1, 1), (35, 1, 1), (36, 1, 1), (37, 1, 1), (38, 1, 1), (39, 1, 1), (40, 1, 1), (41, 1, 1), (42, 1, 1), (43, 1, 1), (44, 1, 1), (45, 1, 1), (46, 1, 1), (47, 1, 1), (48, 1, 1), (49, 1, 1), (51, 1, 1), (54, 1, 1), (56, 1, 1), (58, 1, 1), (60, 1, 1)]
+
+Starting a fpylll BKZ-10 tour.  slope: -0.07047,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 2.769 s, walltime: 2.769 sec
+Starting a fpylll BKZ-11 tour.  slope: -0.06966,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 3.062 s, walltime: 5.831 sec
+Starting a fpylll BKZ-12 tour.  slope: -0.06921,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 1.831 s, walltime: 7.662 sec
+Starting a fpylll BKZ-13 tour.  slope: -0.06867,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 2.892 s, walltime: 10.554 sec
+Starting a fpylll BKZ-14 tour.  slope: -0.06808,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 2.443 s, walltime: 12.998 sec
+Starting a fpylll BKZ-15 tour.  slope: -0.06749,||b_1|| = 20187049, target_norm = 166544, BKZ cost: 3.388 s, walltime: 16.386 sec
+Starting a fpylll BKZ-16 tour.  

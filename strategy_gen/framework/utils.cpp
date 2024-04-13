@@ -763,9 +763,6 @@ int get_beta_(Params params, int beta, int jump, int d, double slope){
             //"Optimistic d4f value"
             return beta;
         }
-        else
-            return beta - d4f_gap(beta);
-
         else if(jump/(double) beta <= 0.05){
             //"Theory conservative d4f value"
             // cout<<"beta = "<<beta<<", "<< "beta - d4f_gap(beta) = "<<beta - d4f_gap(beta)<<endl;
