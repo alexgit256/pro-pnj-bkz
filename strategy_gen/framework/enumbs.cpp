@@ -1014,7 +1014,7 @@ void EnumBS::enumbs_est(vector<double> l0){
     EnumBS::blocksize_strategy bsmin;
     for(int i = 0; i<int(BS.size()); i++){
         
-        if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM){
+        if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM  and (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second <= params.max_RAM){ 
             bsmin = BS[i];
             Gmin = BS[i].GB.first;
             Bmin = BS[i].GB.second;
@@ -1251,7 +1251,7 @@ void EnumBS::enumbs_est_in_parallel(double* l_array){
     bool flag = false;
     // print_BS(BS);
     for(int i = 0; i<int(BS.size()); i++){
-        if(BS[i].GB.first<Gmin  and BS[i].GB.second < params.max_RAM){
+        if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM and (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second <= params.max_RAM){
             bsmin = BS[i];
             Gmin = BS[i].GB.first;
             Bmin = BS[i].GB.second;

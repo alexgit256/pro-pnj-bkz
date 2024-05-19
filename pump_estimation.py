@@ -24,6 +24,7 @@ def pump_estimation(rr,q, alpha, succ_prob = 0.999):
     d=len(rr)
     PSC = 0.
     pre_psvp = 0.
+    flag = False
     for beta in range(30,d):
         GH = gaussian_heuristic(rr[d-beta:])
         length=(GH/(sigma**2))
@@ -31,11 +32,15 @@ def pump_estimation(rr,q, alpha, succ_prob = 0.999):
         if(pre_psvp >= psvp):
             continue
         if(psvp >= succ_prob):
+            flag = True
             break
         f = dim4free_wrapper(theo_dim4free_fun2, beta)
         PSC +=  get_pump_time(beta-f, d) * (psvp-pre_psvp)
         pre_psvp = psvp
-    return log2(PSC), beta
+    if(flag):
+        return log2(PSC), beta
+    else:
+        return log2(PSC), d+1
 
 
 

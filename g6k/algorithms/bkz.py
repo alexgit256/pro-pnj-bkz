@@ -136,6 +136,8 @@ def pump_n_jump_bkz_tour(g6k, tracer, blocksize, jump=1,
     """
     if pump_params is None:
         pump_params = {"down_sieve": False}
+    if(jump > 1):
+        pump_params["ds"] = True
 
     if "dim4free" in pump_params:
         raise ValueError("In pump_n_jump_bkz, you should choose dim4free via dim4free_fun.")
@@ -163,6 +165,7 @@ def pump_n_jump_bkz_tour(g6k, tracer, blocksize, jump=1,
 
 
     max_RAM_cost = 0
+
   
     for (kappa, beta, f) in indices:
         if verbose:

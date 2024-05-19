@@ -1,0 +1,14 @@
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+
+-------------------------
+Primal attack, LWE challenge n=50, alpha=0.0250
+Cost for generate strategy through EnumBS: 915.54 sec
+Chose 219 samples, the minimal expected time cost is 4336037.423 sec
+
+Blocksize Strategy: [(62, 6, 1), (70, 7, 1), (74, 8, 1), (79, 9, 1), (81, 10, 1), (102, 11, 2), (104, 11, 1), (119, 12, 2), (128, 12, 1), (141, 14, 1), (143, 9, 1), (143, 1, 1)]
+
+
+Find the expected minimal  Strategy through EumBS!!
+bs = (slope = -3.312704e-02, G_BKZ = 1.369465e+01 log2(sec), B_BKZ = 3.674361e+01 log2(bit), cum-pr = 1.529975e-02, pump-{40,180,17}, G_dsvp = 2.204353e+01 log2(sec), B_dsvp = 4.351876e+01 bit, G = 2.204795e+01 log2(sec), B = 4.351876e+01 log2(bit),  min_GB.first = 2.204795e+01 log2(sec))
+S(beta,jump,tours):[(62,6,1),(70,7,1),(74,8,1),(79,9,1),(81,10,1),(102,11,2),(104,11,1),(119,12,2),(128,12,1),(141,14,1),(143,9,1),(143,1,1)]
+Min Cost = 22.05 log2(sec) = 4336037.42 s, Memory Cost = 43.53 log2(bit) = 1480.51 GB 

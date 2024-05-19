@@ -1,0 +1,73 @@
+-------------------------
+Primal attack, LWE challenge n=40, alpha=0.0300
+Chose 178 samples. Predict solution at bkz-102 + svp-133
+
+GSO precision:  dd
+||b_1|| = 2563201, target_norm = 615938
+Intial Slope = -0.06402, dim = 179, dvol = 325.1601313874114
+
+slope = -0.064016
+cost_model = 3
+Strategy (56,8,1), slope = -0.056928, sim-cost = 5.9773100 log2(sec) = 63.0013144 sec 
+Strategy (80,10,1), slope = -0.050095, sim-cost = 6.2621855 log2(sec) = 76.7548212 sec 
+Strategy (81,10,1), slope = -0.046370, sim-cost = 6.3151599 log2(sec) = 79.6255684 sec 
+Strategy (102,11,1), slope = -0.042054, sim-cost = 7.5093051 log2(sec) = 182.1906526 sec 
+Strategy (114,11,1), slope = -0.039216, sim-cost = 9.1309036 log2(sec) = 560.6294128 sec 
+Strategy (119,11,1), slope = -0.038011, sim-cost = 9.9733058 log2(sec) = 1005.2271061 sec 
+pump-{27,152,15}, sim-pump cost = 6508.5379582 sec
+Gcum = 8459.46sec, Bcum = 4.08395e+11bits
+=============================
+-------------------------
+Primal attack, LWE challenge n=40, alpha=0.0250
+Chose 171 samples. Predict solution at bkz-89 + svp-117
+
+GSO precision:  dd
+||b_1|| = 2563201, target_norm = 410914
+Intial Slope = -0.06660, dim = 172, dvol = 331.9735338747317
+
+slope = -0.066598
+cost_model = 3
+Strategy (77,8,1), slope = -0.056218, sim-cost = 6.4596547 log2(sec) = 88.0136077 sec 
+Strategy (81,10,1), slope = -0.049716, sim-cost = 6.1793679 log2(sec) = 72.4728079 sec 
+Strategy (102,11,1), slope = -0.043327, sim-cost = 7.5016354 log2(sec) = 181.2246526 sec 
+Strategy (102,11,2), slope = -0.041096, sim-cost = 7.5016354 log2(sec) = 181.2246526 sec 
+pump-{35,137,14}, sim-pump cost = 462.8002009 sec
+Gcum = 984.871sec, Bcum = 7.61369e+10bits
+=============================
+-------------------------
+Primal attack, LWE challenge n=45, alpha=0.0200
+Chose 184 samples. Predict solution at bkz-89 + svp-121
+
+GSO precision:  dd
+||b_1|| = 4108729, target_norm = 453604
+Intial Slope = -0.06569, dim = 185, dvol = 373.4658972674150
+
+slope = -0.065691
+cost_model = 3
+Strategy (70,8,1), slope = -0.057526, sim-cost = 6.3952006 log2(sec) = 84.1680397 sec 
+Strategy (80,10,1), slope = -0.051198, sim-cost = 6.3879281 log2(sec) = 83.7448208 sec 
+Strategy (102,11,1), slope = -0.044208, sim-cost = 7.6594806 log2(sec) = 202.1777778 sec 
+Strategy (102,11,2), slope = -0.041411, sim-cost = 7.6594806 log2(sec) = 202.1777778 sec 
+Strategy (103,11,1), slope = -0.040398, sim-cost = 7.8148977 log2(sec) = 225.1741917 sec 
+pump-{45,140,14}, sim-pump cost = 811.0012164 sec
+Gcum = 1607.29sec, Bcum = 1.09001e+11bits
+=============================
+-------------------------
+Primal attack, LWE challenge n=50, alpha=0.0150
+Chose 193 samples. Predict solution at bkz-87 + svp-118
+
+GSO precision:  dd
+||b_1|| = 6265009, target_norm = 408088
+Intial Slope = -0.06803, dim = 194, dvol = 415.6552752456853
+
+slope = -0.068032
+cost_model = 3
+Strategy (56,8,1), slope = -0.061364, sim-cost = 6.1613181 log2(sec) = 71.5717399 sec 
+Strategy (66,9,1), slope = -0.055771, sim-cost = 6.1860886 log2(sec) = 72.8112062 sec 
+Strategy (80,10,1), slope = -0.050748, sim-cost = 6.5128561 log2(sec) = 91.3198204 sec 
+Strategy (81,10,1), slope = -0.047611, sim-cost = 6.5644786 log2(sec) = 94.6465893 sec 
+Strategy (102,11,1), slope = -0.043049, sim-cost = 7.8008540 log2(sec) = 222.9929030 sec 
+Strategy (102,11,2), slope = -0.041067, sim-cost = 7.8008540 log2(sec) = 222.9929030 sec 
+pump-{56,138,14}, sim-pump cost = 574.9174335 sec
+Gcum = 1350.2sec, Bcum = 8.75315e+10bits
+=============================

@@ -161,7 +161,14 @@ def lwe_kernel(arg0, params=None, seed=None):
     strategy_method = params.pop("strategy_method")
     load_lwe = params.pop("load_lwe")
     float_type = params.pop("float_type")
-    
+    max_jump = params.pop("max_jump")
+    if(max_jump is None):
+        max_jump = 100    
+    set_j1 = params.pop("set_j1")
+    gen_strategy_only = params.pop("gen_strategy_only")
+    max_RAM = params.pop("max_RAM")
+    if(max_RAM is None):
+        max_RAM = 1000
     
     print("-------------------------")
     if(load_lwe == "lwe_instance"):
@@ -229,7 +236,7 @@ def lwe_kernel(arg0, params=None, seed=None):
     log2_rr = [round((log2(g6k.M.get_r(i,i))/2.) - (log2(sigma)),5) for i in range(d)]
     
     if(strategy_method == "enumbs"):
-        enumbs = EnumBS(d,g6k.M.float_type)
+        enumbs = EnumBS(d,g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_enumbs = time.time()
         enumbs(log2_rr)
         # enumbs(d,dvol)
@@ -239,7 +246,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         target_slope = enumbs.get_target_slope()
     
     if(strategy_method == "bssav1"):
-        bssa = BSSA(d,"v1",g6k.M.float_type)
+        bssa = BSSA(d,"v1",g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_bssa = time.time()
         bssa(log2_rr)
         sys.stdout.flush()
@@ -247,7 +254,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         blocksizes =bssa.get_strategy()
         
     if(strategy_method == "bssav2"):
-        bssa = BSSA(d,"v2",g6k.M.float_type)
+        bssa = BSSA(d,"v2",g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_bssa = time.time()
         bssa(log2_rr)
         sys.stdout.flush()
@@ -261,16 +268,20 @@ def lwe_kernel(arg0, params=None, seed=None):
 
     
     
+    if(set_j1 == 1):
+        blocksizes = [(blocksize, 1, tours) for (blocksize, _, tours) in blocksizes]
+    
     print("Blocksize Strategy: ", end= "")    
     print(blocksizes)
     print()
+
     
     T0 = time.time()
     T0_BKZ = time.time()
 
     # print(abs(basis_quality(g6k.M)["/"] - target_slope),basis_quality(g6k.M)["/"],target_slope)
     # while( abs(basis_quality(g6k.M)["/"] - target_slope)> 0.001):
-    if(True):
+    if(gen_strategy_only is None or gen_strategy_only != 1):
         for S in blocksizes:
             (blocksize, jump, tours) = S 
             for tt in range(tours):
@@ -348,76 +359,76 @@ def lwe_kernel(arg0, params=None, seed=None):
                     fn.close()
                     return
             
-    if not (g6k.M.get_r(0, 0) <= target_norm ):#or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1):
-        if(beta_pump is None):
-            rr = [g6k.M.get_r(i,i) for i in range(d)]
-            # if(succ_prob is not None):
-            #     beta_pump = pump_estimation(rr,q, alpha, succ_prob = succ_prob)
-            # else:
-            beta_pump = min(d, pump_estimation(rr,q, alpha)[1] + 1)
-                
-        n_max= 143
-        
-        llb = d - beta_pump
-        f = max(accs_2023_d4f(slope), beta_pump - n_max)
-        
-        T0_pump = time.time()
-        print("Without otf, would expect solution at pump_{%d, %d, %d},n_max = %d" % (llb, beta_pump , f, n_max)) # noqa
-                
-        
-        if verbose:
-            print()
-            print( "Starting svp pump_{%d, %d, %d}" % (llb, d-llb, f) ) # noqa
-            sys.stdout.flush()
+        if not (g6k.M.get_r(0, 0) <= target_norm ):#or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1):
+            if(beta_pump is None):
+                rr = [g6k.M.get_r(i,i) for i in range(d)]
+                # if(succ_prob is not None):
+                #     beta_pump = pump_estimation(rr,q, alpha, succ_prob = succ_prob)
+                # else:
+                beta_pump = min(d, pump_estimation(rr,q, alpha)[1] + 1)
+                    
+            n_max= 143
+            
+            llb = d - beta_pump
+            f = max(accs_2023_d4f(slope), beta_pump - n_max)
+            
+            T0_pump = time.time()
+            print("Without otf, would expect solution at pump_{%d, %d, %d},n_max = %d" % (llb, beta_pump , f, n_max)) # noqa
+                    
+            
+            if verbose:
+                print()
+                print( "Starting svp pump_{%d, %d, %d}" % (llb, d-llb, f) ) # noqa
+                sys.stdout.flush()
+                        
+
+            _, max_RAM_cost = pump(g6k, tracer, llb, d-llb, f, verbose=verbose, goal_r0=target_norm * (d - llb)/(1.*d),**pump_params)
+
+
+            if verbose:
+                T_pump = time.time() - T0_pump
+                slope = basis_quality(g6k.M)["/"]
+                fmt = "slope: %.5f, T_pump = %.3f sec, RAM_pump = %.3f GB, walltime: %.3f sec"
+                print(fmt % (slope,T_pump, max_RAM_cost, time.time()-T0))
+
+                        
+            g6k.lll(0, g6k.full_n)
                     
 
-        _, max_RAM_cost = pump(g6k, tracer, llb, d-llb, f, verbose=verbose, goal_r0=target_norm * (d - llb)/(1.*d),**pump_params)
-
-
-        if verbose:
-            T_pump = time.time() - T0_pump
-            slope = basis_quality(g6k.M)["/"]
-            fmt = "slope: %.5f, T_pump = %.3f sec, RAM_pump = %.3f GB, walltime: %.3f sec"
-            print(fmt % (slope,T_pump, max_RAM_cost, time.time()-T0))
-
-                    
-        g6k.lll(0, g6k.full_n)
-                
-
-        
-        #write the result of basis after last pump
-        alpha_ = int(alpha*1000)
-        filename = 'lwechallenge/%03d-%03d-last-pump.txt' % (n, alpha_)
-        fn = open(filename, "w")
-        fn.write(str(n)+'\n')
-        fn.write(str(m)+'\n')
-        fn.write(str(q)+'\n')
-        fn.write(str(alpha)+'\n')
-        fn.write('[')
-        for i in range(g6k.M.B.nrows):
+            
+            #write the result of basis after last pump
+            alpha_ = int(alpha*1000)
+            filename = 'lwechallenge/%03d-%03d-last-pump.txt' % (n, alpha_)
+            fn = open(filename, "w")
+            fn.write(str(n)+'\n')
+            fn.write(str(m)+'\n')
+            fn.write(str(q)+'\n')
+            fn.write(str(alpha)+'\n')
             fn.write('[')
-            for j in range(g6k.M.B.ncols):
-                fn.write(str(g6k.M.B[i][j]))
-                if j<g6k.M.B.ncols-1:
-                    fn.write(' ')
-            if i < g6k.M.B.nrows-1:
-                fn.write(']\n')
-        fn.write(']]')
-        fn.close()
+            for i in range(g6k.M.B.nrows):
+                fn.write('[')
+                for j in range(g6k.M.B.ncols):
+                    fn.write(str(g6k.M.B[i][j]))
+                    if j<g6k.M.B.ncols-1:
+                        fn.write(' ')
+                if i < g6k.M.B.nrows-1:
+                    fn.write(']\n')
+            fn.write(']]')
+            fn.close()
 
 
-    if g6k.M.get_r(0, 0) <= target_norm: #or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1:
-        print("Finished! TT=%.2f sec" % (time.time() - T0))
-        print(g6k.M.B[0])
-        alpha_ = int(alpha*1000)
-        filename = 'lwechallenge/%03d-%03d-solution.txt' % (n, alpha_)
-        fn = open(filename, "w")
-        fn.write(str(g6k.M.B[0]))
-        fn.close()
-        return
-        
-        
-    raise ValueError("No solution found.")
+        if g6k.M.get_r(0, 0) <= target_norm: #or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1:
+            print("Finished! TT=%.2f sec" % (time.time() - T0))
+            print(g6k.M.B[0])
+            alpha_ = int(alpha*1000)
+            filename = 'lwechallenge/%03d-%03d-solution.txt' % (n, alpha_)
+            fn = open(filename, "w")
+            fn.write(str(g6k.M.B[0]))
+            fn.close()
+            return
+            
+            
+        raise ValueError("No solution found.")
 
 
 def lwe():

@@ -16,13 +16,11 @@ def chi_square_estimate(rr,sigma, succ_prob =  0.999):
         if(chdtr(beta, length) >= succ_prob):
             return beta
 
-
 def expected_value_estimate(rr,sigma):
     d = len(rr)
     for beta in range(30,d):
         if(gaussian_heuristic(rr[d-beta:]) >= (sigma**2 * (d-1) + 1) * beta/(1.*d)):
             return beta
-
   
 def compute_projected_norm(target_vector,g6k,dsvp):      
     yl = g6k.M.from_canonical(target_vector)

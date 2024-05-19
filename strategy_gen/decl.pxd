@@ -113,7 +113,8 @@ cdef extern from "framework/strategy_simulation.h" nogil:
         void enumbs_est_in_parallel(double* l0)
         #void enumbs_est_in_parallel(int dim, double dvol)
         void get_strategy(long* strategy)
-        double get_target_slope();
+        double get_target_slope()
+        double get_time_cost()
         #void set_threads(int nr)
         #void print_param_setting()
 
@@ -122,7 +123,7 @@ cdef extern from "framework/strategy_simulation.h" nogil:
         void bssa_est(double* l_array, int sbeta, int gbeta)
         int strategy_size()
         void get_strategy(long* strategy)
-
+        double get_time_cost()
 
     
     cdef void test_lwechal_from_gsa(Params params, int dim, double dvol, long* strategy_arr, int strategy_size)

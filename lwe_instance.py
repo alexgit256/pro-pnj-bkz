@@ -191,7 +191,7 @@ def lwe_kernel(arg0, params=None, seed=None):
             
             #write the mid result of basis
             alpha_ = int(alpha*1000)
-            filename = 'lwechallenge/%03d-%03d-midmat-default-g6k.txt' % (n, alpha_)
+            filename = 'lwe_instance/%03d-%03d-midmat-default-g6k-%03d.txt' % (n, alpha_,blocksize)
             fn = open(filename, "w")
             fn.write(str(n)+'\n')
             fn.write(str(m)+'\n')

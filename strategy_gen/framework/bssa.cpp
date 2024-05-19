@@ -568,7 +568,8 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
         // G1 = it->second.cum_GB_BKZ.first;
         // G2 = get<4>(dsvp_t0);
         G = log2(pow(2,G1)+pow(2,G2));
-        B = log2(pow(2,get<3>(dsvp_t0))+pow(2,it->second.cum_avg_GB_BKZ.second));
+        // B = log2(pow(2,get<3>(dsvp_t0))+pow(2,it->second.cum_avg_GB_BKZ.second));
+        B = max(log2(pow(2,get<3>(dsvp_t0))+pow(2,it->second.cum_avg_GB_BKZ.second)),(cost->pump_cost(get<0>(dsvp_t0),params.cost_model)).second);
         if(G < Gmin and B < params.max_RAM and it->second.S.size()>0){
             bsmin = it->second;
             Gmin = G;

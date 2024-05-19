@@ -833,7 +833,7 @@ void print_param_setting(Params params){
         printf("BSSAv1 Strategy Generation:");
     if(params.method == 2 and params.bssa_tradition == false)
         printf("BSSAv2 Strategy Generation:");
-    printf("v1. beta_start= %d, gap = %d, J = %d, J_gap = %d, cost_model = %d, max_loop = %d,  G_prec = %e,  slope_prec = %e,  progressive_sieve = True, worst_case = %d, succ_prob = %1.3f, ", params.beta_start, params.gap, params.J, params.J_gap, params.cost_model, params.max_loop,params.enumbs_G_prec, params.enumbs_slope_prec,  params.worst_case, params.succ_prob);
+    printf("v1. beta_start= %d, gap = %d, J = %d, J_gap = %d, cost_model = %d, max_loop = %d,  G_prec = %e,  slope_prec = %e,  progressive_sieve = True, worst_case = %d, succ_prob = %1.3f, max_RAM = %1.2f log2(bit), ", params.beta_start, params.gap, params.J, params.J_gap, params.cost_model, params.max_loop,params.enumbs_G_prec, params.enumbs_slope_prec,  params.worst_case, params.succ_prob, params.max_RAM);
 
     if(params.method == 1)
         printf("threads = %d, ", params.threads);

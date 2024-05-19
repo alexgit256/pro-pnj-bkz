@@ -442,6 +442,36 @@ double COST::refined_pnjbkz_cost_model_dd(int d, int blocksize, int jump){
     return log2(simulated_pnjbkz_cost);
 }
 
+
+
+//get pump cost in threads = 32, gpus =2
+pair<double,double> COST::refined_practical_pump_cost_dd(int beta){
+    //make sure not use the enum cost 
+    // int f = get_f_for_pump(params, beta);
+    // f = dims4free(beta);
+    int beta_prime = beta;
+    double secs, bits;
+    
+    secs = 0.05 * pow(2, 0.367*beta - 27.108) + 0.1 * pow(2, 0.2075 * beta -16.187);  //consider generating hash value
+
+    //unit: GB
+    if( beta_prime <= 56)
+    	bits = 2.0311;
+    else if( beta_prime >=57 and  beta_prime <=63)
+    	bits = 8e-5 *  pow(beta_prime,2) - 0.0083*beta_prime + 2.2555;
+    else if( beta_prime >= 64 and beta_prime <= 94)
+    	bits = 2.195202e-6 * pow(beta_prime,4) - 6.297613e-4 * pow(beta_prime,3) +6.803540e-2 * pow(beta_prime,2) - 3.274476 * beta_prime + 61.31963;
+    else if( beta_prime >= 95)
+    	bits = 2.0311 + pow(2,0.1992* beta_prime  - 18.714);
+
+    //unit: log2(bit)
+    bits = log2(bits * pow(2,33));
+    return make_pair(secs,bits); //n_expected = beta -f , beta = d-llb
+}
+
+
+
+
 //get pump cost in threads = 32, gpus =2
 pair<double,double> COST::practical_pump_cost_dd(int beta){
     //make sure not use the enum cost 

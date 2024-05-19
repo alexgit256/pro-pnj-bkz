@@ -51,6 +51,7 @@ class COST{
         
         pair<double,double> get_k1_k2_pump_dd(int beta);//parameter for practical pump while threads = 32, gpus = 2
         pair<double,double> practical_pump_cost_dd(int beta); //pump cost in experiment, threads = 32, gpus = 2 (time unit: log2(sec))
+        pair<double,double> refined_practical_pump_cost_dd(int beta);
         double practical_bkz_cost_dd(int d,int beta,int jump); //pnj-bkz cost in experiment, threads = 32, gpus = 2 (time unit: log2(sec))
         double refined_pnjbkz_cost_model_dd(int d, int blocksize, int jump);
 

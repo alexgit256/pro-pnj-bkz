@@ -1,0 +1,2 @@
+WARNING:        root:2024/05/04 22:05:29 CST: saturation 0.402 at [b:127 P: 52 - 179 / 179], radius 1.333, goal: 0.500
+ INFO:        root:2024/05/04 22:05:29 CST: Could not reach saturation, progress may slow.

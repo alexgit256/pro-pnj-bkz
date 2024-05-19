@@ -9,11 +9,12 @@ from numpy import zeros, float64, int64
 cdef class EnumBS(object):
 
 
-    def __init__(self, dim, float_type):
+    def __init__(self, dim, float_type, max_jump = 100, max_RAM = 1000 ):
         cdef Params params
         
         params.method = 1
-
+        params.J = max_jump
+        params.max_RAM = max_RAM
         if(float_type == "dd"):
             params.cost_model = 3
             params.sim_d4f = 2
@@ -68,6 +69,9 @@ cdef class EnumBS(object):
     def get_target_slope(self):
         return self._core1.get_target_slope()
 
+    def get_time_cost(self):
+        return self._core1.get_time_cost()
+
     
     def __dealloc__(self):
         del self._core1
@@ -77,9 +81,12 @@ cdef class EnumBS(object):
     
 
 cdef class BSSA(object):
-    def __init__(self, dim, version,float_type):
+    def __init__(self, dim, version,float_type, max_jump = 100, max_RAM = 1000):
         cdef Params params
         params.method = 2
+        params.J = max_jump
+    
+        params.max_RAM = max_RAM
         if(version == "v2"):
             params.bssa_tradition = 0
         if(version == "v1"):
@@ -141,7 +148,8 @@ cdef class BSSA(object):
         return S
 
     
-
+    def get_time_cost(self):
+        return self._core1.get_time_cost()
     
     
     def __dealloc__(self):

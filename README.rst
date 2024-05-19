@@ -18,9 +18,9 @@ Before implement our code, please follow the compile guidance in the topic **G6K
 .. code-block:: bash
 
     source ./activate
-    python ProPnjBKZ_for_lwe.py 40 --lwe/alpha 0.025 --threads 32 --gpus 2 --verbose True --pump/down_sieve True --float_type "dd" --strategy_method "enumbs" --load_lwe "lwe_challenge"
+    python ProPnjBKZ_for_lwe.py 40 --lwe/alpha 0.025 --threads 32 --gpus 2 --verbose True --pump/down_sieve True --float_type "dd" --strategy_method "enumbs" --load_lwe "lwe_challenge" --max_RAM 43
 
-It means that use blocksize strategy generation algorithm EnumBS(three choices: enumbs, bssav1, bssav2), 32 threads and 2 gpus to solve LWE challenge with `(n,alpha) = (40,0.025)` in float_type "dd". 
+It means that use blocksize strategy generation algorithm EnumBS(three choices: enumbs, bssav1, bssav2), 32 threads and 2 gpus to solve LWE challenge with `(n,alpha) = (40,0.025)` in float_type "dd" with maximal memory 43 log2(bit).
 
 By the way, for the practical test, the blocksize and jump strategy is only optimized in our machine with Intel Xeon 5128 16c 32@2.3GHz, 1.48T RAM and NVIDIA Geforce RTX 3090 * 2. If you want to generate your optimized blocksize and jump strategy (but also has a speedup effect) in your machine, you should test the practical cost model for you machine and modify the data in the function `get_k1_k2_pump` and `get_k1_k2_pnj` in `cost.cpp` file. For convenience, one can also generate the strategy using a theoretical cost model, just set the `cost_model = 1`.
 
@@ -33,12 +33,19 @@ We run the experiment in `implement_low_dim_qd.sh`(qd float_type) and `implement
 
 
 
-The LWE instance in detail, including the actual basis quality(we regard "slope" as a basis quality representation) and actual cost(in practical cost model with threads = 32 and gpus = 2 * (RTX3090 GPU) (sec)) after each pnj-BKZ(beta,J,tours) reduction, also obatained from the above code. We select the process information of LWE challenge ($40,0.030$)  as 'Practical' column in Table 5. 
+The LWE instance in detail, including the actual basis quality(we regard "slope" as a basis quality representation) and actual cost(in practical cost model with threads = 32 and gpus = 2 * (RTX3090 GPU) (sec)) after each pnj-BKZ(beta,J,tours) reduction, also obatained from the above code. We select the process information of LWE challenge ($40,0.030$),($45,0.020$),($50,0.015$),($40,0.025$)  as 'Practical' column in Table 5, Table 11, Table 12 and Table 13. 
 
 .. code-block:: bash
 
-    ./implement_low_dim_qd.sh
+    ./implement_lwechal.sh
 
+
+And the 'Simulation' column can be obtained by running the strategy simulation file `strategy_simulation.py` by
+.. code-block:: bash
+    
+    python -u strategy_simulation.py | tee simulated_cost_and_slope.log
+
+and will obtain the log file `simulated_cost_and_slope.log`. 
 
 Call
 .. code-block:: bash

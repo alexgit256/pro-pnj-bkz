@@ -95,7 +95,7 @@ def pump(g6k, tracer, kappa, blocksize, dim4free, down_sieve=False, down_sat=Non
          goal_r0=None, max_up_time=None, down_stop=None, start_up_n=50, saturation_error="weaken",  # Flow control of the pump
          increasing_insert_index=True, prefer_left_insert=1.04,                                     # Insertion policy
          verbose=False,                                                                             # Misc
-         big_steps=1, big_steps_n=20
+         big_steps=1, big_steps_n=20, ds = False
          ):
     """
     Run the pump algorithm.
@@ -119,6 +119,7 @@ def pump(g6k, tracer, kappa, blocksize, dim4free, down_sieve=False, down_sat=Non
     :param increasing_insert_index: During pump-down, always insert on the right side of the previous insertion.
     :param prefer_left_insert: Parameter theta from the paper (Sec 4.4) for scoring insertion candidates.
     :param verbose: print pump steps on the standard output.
+    :param ds: True: down_sieve to 3; False: down sieve to down_stop value.
 
     """
     # print(g6k.params.saturation_ratio)
@@ -198,7 +199,9 @@ def pump(g6k, tracer, kappa, blocksize, dim4free, down_sieve=False, down_sat=Non
 
             # Pump Down
             pump.phase = "down"
-            while (g6k.n > 3):# and (pump.insert_left_bound <= kappa+down_stop)):
+            while (g6k.n > 3):
+                if(not ds and (pump.insert_left_bound > kappa+down_stop)):
+                    break
                 with tracer.context(("pump-step-down", "l:%d r:%d n:%d" % (g6k.l, g6k.r, g6k.n))):
                     with g6k.temp_params(saturation_ratio=pump.saturation_ratio_down):
                         # (try to) Insert

@@ -100,6 +100,8 @@ class EnumBS{
         int strategy_size() const { return bsmin.S.size(); }
         double get_target_slope() const { return get_current_slope(bsmin.l,0,d); }
 
+        double get_time_cost() const { return bsmin.GB.first; }
+
         // void print_param_setting();
         
         explicit EnumBS(Params params,int d){ //

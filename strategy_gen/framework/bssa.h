@@ -38,6 +38,10 @@ class BSSA{
         }
 
         int strategy_size() const { return bsmin.S.size(); }
+
+
+
+        double get_time_cost() const { return log2(pow(2, bsmin.cum_avg_GB_BKZ.first) + pow(2, get<2>(dsvp_predict(bsmin.l, bsmin.cum_pr, cost,params.cost_model, bsmin.cum_GB_BKZ)))) ; }
         void print_strategy(vector<strategy> S);
         void print_BS(map<int,BSSA::blocksize_strategy> BS);
         void print_bs(blocksize_strategy bs);
