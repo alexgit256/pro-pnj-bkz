@@ -4632,7 +4632,7 @@ static PyObject *__pyx_pf_12strategy_gen_lwechal_simulation_gsa(CYTHON_UNUSED Py
  * 
  * 
  *     sig_on()             # <<<<<<<<<<<<<<
- *     test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)
+ *     return test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)
  *     sig_off()
  */
   __pyx_t_8 = sig_on(); if (unlikely(__pyx_t_8 == ((int)0))) __PYX_ERR(0, 177, __pyx_L1_error)
@@ -4640,23 +4640,19 @@ static PyObject *__pyx_pf_12strategy_gen_lwechal_simulation_gsa(CYTHON_UNUSED Py
   /* "strategy_gen.pyx":178
  * 
  *     sig_on()
- *     test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)             # <<<<<<<<<<<<<<
+ *     return test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)             # <<<<<<<<<<<<<<
  *     sig_off()
  * 
  */
+  __Pyx_XDECREF(__pyx_r);
   __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_dim); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
   __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_v_dvol); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
   __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_strategy_size); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
-  test_lwechal_from_gsa(__pyx_v_params, __pyx_t_8, __pyx_t_9, ((long *)__pyx_v_strategy->data), __pyx_t_10);
-
-  /* "strategy_gen.pyx":179
- *     sig_on()
- *     test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)
- *     sig_off()             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  sig_off();
+  __pyx_t_3 = PyFloat_FromDouble(test_lwechal_from_gsa(__pyx_v_params, __pyx_t_8, __pyx_t_9, ((long *)__pyx_v_strategy->data), __pyx_t_10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
 
   /* "strategy_gen.pyx":158
  *         del self._core2
@@ -4667,8 +4663,6 @@ static PyObject *__pyx_pf_12strategy_gen_lwechal_simulation_gsa(CYTHON_UNUSED Py
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
@@ -4684,7 +4678,7 @@ static PyObject *__pyx_pf_12strategy_gen_lwechal_simulation_gsa(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "strategy_gen.pyx":183
+/* "strategy_gen.pyx":185
  * 
  * 
  * def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):             # <<<<<<<<<<<<<<
@@ -4735,13 +4729,13 @@ static PyObject *__pyx_pw_12strategy_gen_3lwechal_simulation_actual_l(PyObject *
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_S)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, 1); __PYX_ERR(0, 183, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, 1); __PYX_ERR(0, 185, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_strategy_size)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, 2); __PYX_ERR(0, 183, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, 2); __PYX_ERR(0, 185, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -4751,7 +4745,7 @@ static PyObject *__pyx_pw_12strategy_gen_3lwechal_simulation_actual_l(PyObject *
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lwechal_simulation_actual_l") < 0)) __PYX_ERR(0, 183, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lwechal_simulation_actual_l") < 0)) __PYX_ERR(0, 185, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4771,7 +4765,7 @@ static PyObject *__pyx_pw_12strategy_gen_3lwechal_simulation_actual_l(PyObject *
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 183, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lwechal_simulation_actual_l", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 185, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("strategy_gen.lwechal_simulation_actual_l", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4805,7 +4799,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lwechal_simulation_actual_l", 0);
 
-  /* "strategy_gen.pyx":185
+  /* "strategy_gen.pyx":187
  * def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):
  *     cdef Params params
  *     params.verbose = True             # <<<<<<<<<<<<<<
@@ -4814,17 +4808,17 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
  */
   __pyx_v_params.verbose = 1;
 
-  /* "strategy_gen.pyx":186
+  /* "strategy_gen.pyx":188
  *     cdef Params params
  *     params.verbose = True
  *     if(float_type == "dd"):             # <<<<<<<<<<<<<<
  *         params.cost_model = 3
  *         params.sim_d4f = 2
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_float_type, __pyx_n_s_dd, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_float_type, __pyx_n_s_dd, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "strategy_gen.pyx":187
+    /* "strategy_gen.pyx":189
  *     params.verbose = True
  *     if(float_type == "dd"):
  *         params.cost_model = 3             # <<<<<<<<<<<<<<
@@ -4833,7 +4827,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
  */
     __pyx_v_params.cost_model = 3;
 
-    /* "strategy_gen.pyx":188
+    /* "strategy_gen.pyx":190
  *     if(float_type == "dd"):
  *         params.cost_model = 3
  *         params.sim_d4f = 2             # <<<<<<<<<<<<<<
@@ -4842,7 +4836,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
  */
     __pyx_v_params.sim_d4f = 2;
 
-    /* "strategy_gen.pyx":186
+    /* "strategy_gen.pyx":188
  *     cdef Params params
  *     params.verbose = True
  *     if(float_type == "dd"):             # <<<<<<<<<<<<<<
@@ -4852,7 +4846,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
     goto __pyx_L3;
   }
 
-  /* "strategy_gen.pyx":190
+  /* "strategy_gen.pyx":192
  *         params.sim_d4f = 2
  *     else:
  *         params.cost_model = 2             # <<<<<<<<<<<<<<
@@ -4862,7 +4856,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   /*else*/ {
     __pyx_v_params.cost_model = 2;
 
-    /* "strategy_gen.pyx":191
+    /* "strategy_gen.pyx":193
  *     else:
  *         params.cost_model = 2
  *         params.sim_d4f = 1             # <<<<<<<<<<<<<<
@@ -4873,66 +4867,66 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   }
   __pyx_L3:;
 
-  /* "strategy_gen.pyx":193
+  /* "strategy_gen.pyx":195
  *         params.sim_d4f = 1
  * 
  *     dim = len(l)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray l0 = zeros(dim, dtype=float64)
  *     for i in range(dim):
  */
-  __pyx_t_2 = PyObject_Length(__pyx_v_l); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_v_l); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 195, __pyx_L1_error)
   __pyx_v_dim = __pyx_t_2;
 
-  /* "strategy_gen.pyx":194
+  /* "strategy_gen.pyx":196
  * 
  *     dim = len(l)
  *     cdef np.ndarray l0 = zeros(dim, dtype=float64)             # <<<<<<<<<<<<<<
  *     for i in range(dim):
  *         l0[i] = l[i]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_dim); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_dim); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 196, __pyx_L1_error)
   __pyx_v_l0 = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "strategy_gen.pyx":195
+  /* "strategy_gen.pyx":197
  *     dim = len(l)
  *     cdef np.ndarray l0 = zeros(dim, dtype=float64)
  *     for i in range(dim):             # <<<<<<<<<<<<<<
  *         l0[i] = l[i]
  * 
  */
-  __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_dim); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_dim); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
     __pyx_t_6 = __pyx_t_4; __Pyx_INCREF(__pyx_t_6); __pyx_t_2 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 197, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   for (;;) {
@@ -4940,17 +4934,17 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
       if (likely(PyList_CheckExact(__pyx_t_6))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -4960,7 +4954,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 195, __pyx_L1_error)
+          else __PYX_ERR(0, 197, __pyx_L1_error)
         }
         break;
       }
@@ -4969,19 +4963,19 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "strategy_gen.pyx":196
+    /* "strategy_gen.pyx":198
  *     cdef np.ndarray l0 = zeros(dim, dtype=float64)
  *     for i in range(dim):
  *         l0[i] = l[i]             # <<<<<<<<<<<<<<
  * 
  *     cdef np.ndarray strategy = zeros((strategy_size,3), dtype=int64)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_l, __pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_l, __pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_l0), __pyx_v_i, __pyx_t_4) < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_l0), __pyx_v_i, __pyx_t_4) < 0)) __PYX_ERR(0, 198, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "strategy_gen.pyx":195
+    /* "strategy_gen.pyx":197
  *     dim = len(l)
  *     cdef np.ndarray l0 = zeros(dim, dtype=float64)
  *     for i in range(dim):             # <<<<<<<<<<<<<<
@@ -4991,16 +4985,16 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "strategy_gen.pyx":198
+  /* "strategy_gen.pyx":200
  *         l0[i] = l[i]
  * 
  *     cdef np.ndarray strategy = zeros((strategy_size,3), dtype=int64)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(strategy_size):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_strategy_size);
   __Pyx_GIVEREF(__pyx_v_strategy_size);
@@ -5008,42 +5002,42 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   __Pyx_INCREF(__pyx_int_3);
   __Pyx_GIVEREF(__pyx_int_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_3);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 200, __pyx_L1_error)
   __pyx_v_strategy = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "strategy_gen.pyx":200
+  /* "strategy_gen.pyx":202
  *     cdef np.ndarray strategy = zeros((strategy_size,3), dtype=int64)
  * 
  *     for i in range(strategy_size):             # <<<<<<<<<<<<<<
  *         strategy[i][0] = S[i][0]
  *         strategy[i][1] = S[i][1]
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_strategy_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_strategy_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 202, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -5051,17 +5045,17 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -5071,7 +5065,7 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 200, __pyx_L1_error)
+          else __PYX_ERR(0, 202, __pyx_L1_error)
         }
         break;
       }
@@ -5080,61 +5074,61 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "strategy_gen.pyx":201
+    /* "strategy_gen.pyx":203
  * 
  *     for i in range(strategy_size):
  *         strategy[i][0] = S[i][0]             # <<<<<<<<<<<<<<
  *         strategy[i][1] = S[i][1]
  *         strategy[i][2] = S[i][2]
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_3, 0, __pyx_t_5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_3, 0, __pyx_t_5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "strategy_gen.pyx":202
+    /* "strategy_gen.pyx":204
  *     for i in range(strategy_size):
  *         strategy[i][0] = S[i][0]
  *         strategy[i][1] = S[i][1]             # <<<<<<<<<<<<<<
  *         strategy[i][2] = S[i][2]
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_5, 1, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_5, 1, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "strategy_gen.pyx":203
+    /* "strategy_gen.pyx":205
  *         strategy[i][0] = S[i][0]
  *         strategy[i][1] = S[i][1]
  *         strategy[i][2] = S[i][2]             # <<<<<<<<<<<<<<
  * 
  *     sig_on()
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_S, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_strategy), __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_3, 2, __pyx_t_5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_3, 2, __pyx_t_5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "strategy_gen.pyx":200
+    /* "strategy_gen.pyx":202
  *     cdef np.ndarray strategy = zeros((strategy_size,3), dtype=int64)
  * 
  *     for i in range(strategy_size):             # <<<<<<<<<<<<<<
@@ -5144,32 +5138,30 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "strategy_gen.pyx":205
+  /* "strategy_gen.pyx":207
  *         strategy[i][2] = S[i][2]
  * 
  *     sig_on()             # <<<<<<<<<<<<<<
- *     test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)
+ *     return test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)
  *     sig_off()
  */
-  __pyx_t_8 = sig_on(); if (unlikely(__pyx_t_8 == ((int)0))) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_8 = sig_on(); if (unlikely(__pyx_t_8 == ((int)0))) __PYX_ERR(0, 207, __pyx_L1_error)
 
-  /* "strategy_gen.pyx":206
+  /* "strategy_gen.pyx":208
  * 
  *     sig_on()
- *     test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)             # <<<<<<<<<<<<<<
+ *     return test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)             # <<<<<<<<<<<<<<
  *     sig_off()
  */
-  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_strategy_size); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
-  test_lwechal_from_actual_l(__pyx_v_params, ((long *)__pyx_v_strategy->data), __pyx_t_8, ((double *)__pyx_v_l0->data), __pyx_v_dim);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_strategy_size); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(test_lwechal_from_actual_l(__pyx_v_params, ((long *)__pyx_v_strategy->data), __pyx_t_8, ((double *)__pyx_v_l0->data), __pyx_v_dim)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
 
-  /* "strategy_gen.pyx":207
- *     sig_on()
- *     test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)
- *     sig_off()             # <<<<<<<<<<<<<<
- */
-  sig_off();
-
-  /* "strategy_gen.pyx":183
+  /* "strategy_gen.pyx":185
  * 
  * 
  * def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):             # <<<<<<<<<<<<<<
@@ -5178,8 +5170,6 @@ static PyObject *__pyx_pf_12strategy_gen_2lwechal_simulation_actual_l(CYTHON_UNU
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
@@ -6924,18 +6914,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 
-  /* "strategy_gen.pyx":183
+  /* "strategy_gen.pyx":185
  * 
  * 
  * def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):             # <<<<<<<<<<<<<<
  *     cdef Params params
  *     params.verbose = True
  */
-  __pyx_tuple__28 = PyTuple_Pack(9, __pyx_n_s_l, __pyx_n_s_S, __pyx_n_s_strategy_size, __pyx_n_s_float_type, __pyx_n_s_params, __pyx_n_s_dim, __pyx_n_s_l0, __pyx_n_s_i, __pyx_n_s_strategy); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(9, __pyx_n_s_l, __pyx_n_s_S, __pyx_n_s_strategy_size, __pyx_n_s_float_type, __pyx_n_s_params, __pyx_n_s_dim, __pyx_n_s_l0, __pyx_n_s_i, __pyx_n_s_strategy); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_strategy_gen_pyx, __pyx_n_s_lwechal_simulation_actual_l, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 183, __pyx_L1_error)
-  __pyx_tuple__30 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_strategy_gen_pyx, __pyx_n_s_lwechal_simulation_actual_l, 185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
   __Pyx_RefNannyFinishContext();
@@ -7491,17 +7481,17 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_lwechal_simulation_gsa, __pyx_t_2) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "strategy_gen.pyx":183
+  /* "strategy_gen.pyx":185
  * 
  * 
  * def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):             # <<<<<<<<<<<<<<
  *     cdef Params params
  *     params.verbose = True
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_12strategy_gen_3lwechal_simulation_actual_l, 0, __pyx_n_s_lwechal_simulation_actual_l, NULL, __pyx_n_s_strategy_gen, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_12strategy_gen_3lwechal_simulation_actual_l, 0, __pyx_n_s_lwechal_simulation_actual_l, NULL, __pyx_n_s_strategy_gen, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__30);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_lwechal_simulation_actual_l, __pyx_t_2) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_lwechal_simulation_actual_l, __pyx_t_2) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "strategy_gen.pyx":3

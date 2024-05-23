@@ -8,7 +8,7 @@ GSO precision:  dd
 ||b_1|| = 31798321, target_norm = 1335530
 Intial Slope = -0.05874, dim = 281, dvol = 637.6057084533079
 
-Cost for generate strategy through EnumBS: 1273.92 sec
+Cost for generate strategy through EnumBS: 1290.66 sec
 Blocksize Strategy: [(74, 9, 1), (81, 10, 3), (102, 11, 3), (114, 12, 2), (119, 11, 2), (127, 12, 1), (130, 12, 1), (140, 13, 1), (141, 12, 1), (141, 9, 1), (141, 1, 2), (147, 1, 1), (155, 1, 1)]
 
 

@@ -175,8 +175,10 @@ def lwechal_simulation_gsa(dim, dvol, S, strategy_size,float_type = None):
 
 
     sig_on()
-    test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)
+    return test_lwechal_from_gsa(params, dim, dvol, <long*> strategy.data, strategy_size)
     sig_off()
+
+    
 
 
 
@@ -203,5 +205,5 @@ def lwechal_simulation_actual_l(l, S, strategy_size,float_type = None):
         strategy[i][2] = S[i][2]
 
     sig_on()
-    test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)
+    return test_lwechal_from_actual_l(params, <long*> strategy.data, strategy_size, <double*> l0.data, dim)
     sig_off()

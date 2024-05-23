@@ -1,0 +1,9 @@
+WARNING:        root:2024/05/22 10:50:27 CST: saturation 0.413 at [b:66 P: 155 - 221 / 221], radius 1.333, goal: 0.500
+ INFO:        root:2024/05/22 10:50:27 CST: Could not reach saturation, progress may slow.
+WARNING:        root:2024/05/22 10:50:29 CST: saturation 0.216 at [b:62 P: 159 - 221 / 221], radius 1.333, goal: 0.250
+ INFO:        root:2024/05/22 10:50:29 CST: Could not reach saturation, progress may slow.
+WARNING:        root:2024/05/22 10:50:30 CST: saturation 0.109 at [b:57 P: 164 - 221 / 221], radius 1.333, goal: 0.125
+ INFO:        root:2024/05/22 10:50:30 CST: Could not reach saturation, progress may slow.
+WARNING:        root:2024/05/22 10:50:31 CST: saturation 0.052 at [b:54 P: 167 - 221 / 221], radius 1.333, goal: 0.062
+ INFO:        root:2024/05/22 10:50:31 CST: Could not reach saturation, progress may slow.
+DEBUG:        root:2024/05/22 12:10:08 CST: None

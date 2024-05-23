@@ -1,81 +1,43 @@
 Git status: 
-commit e21e6646dfcc58e11f74093fc7d81a33b7f62f10
+commit 884a8ee0ff7cf5d63700dfccf56d177408b98d27
 Author: summwer <15091002@buaa.edu.cn>
 
-    backup-for-cost-test
+    update
 
   (commit or discard the untracked or modified content in submodules)
 	modified:   .last_build
-	modified:   ProPnjBKZ_for_lwe.py
-	modified:   PumpDimEst_comparison.py
-	modified:   README.rst
-	modified:   __pycache__/pump_estimation.cpython-38.pyc
+	modified:   cuda/GPUStreamGeneral.o
 	modified:   g6k-fpylll (modified content)
 	modified:   g6k/algorithms/__pycache__/bkz.cpython-38.pyc
-	modified:   g6k/algorithms/__pycache__/pump.cpython-38.pyc
-	modified:   g6k/algorithms/bkz.py
-	modified:   g6k/algorithms/pump.py
-	modified:   implement_lwe_instance.sh
-	modified:   lwe_instance.py
-	modified:   lwechal-instance-test-new-cost-model/d4f-default-g6k/enumbs(32+2gpus)/54-010-1.log
-	modified:   lwechal-test-dd-ds-new-cost-model-new-dsvp-prediction/default_g6k_main(32+2gpus)/80-005-1.log
-	modified:   lwechallenge/040-025-last-pump.txt
-	modified:   lwechallenge/040-025-midmat-default-g6k.txt
-	modified:   lwechallenge/040-025-midmat.txt
-	modified:   lwechallenge/040-025-solution.txt
-	modified:   lwechallenge/040-030-last-pump.txt
-	modified:   lwechallenge/040-030-midmat.txt
-	modified:   lwechallenge/040-030-solution.txt
-	modified:   lwechallenge/040-035-last-pump.txt
-	modified:   lwechallenge/040-035-midmat.txt
-	modified:   lwechallenge/040-035-solution.txt
-	modified:   lwechallenge/045-020-last-pump.txt
-	modified:   lwechallenge/045-020-midmat.txt
-	modified:   lwechallenge/045-020-solution.txt
-	modified:   lwechallenge/050-015-last-pump.txt
-	modified:   lwechallenge/050-015-midmat.txt
-	modified:   lwechallenge/054-010-last-pump.txt
-	modified:   lwechallenge/054-010-midmat.txt
-	modified:   lwechallenge/055-010-last-pump.txt
-	modified:   lwechallenge/055-010-midmat.txt
-	modified:   lwechallenge/055-010-solution.txt
-	modified:   lwechallenge/056-010-last-pump.txt
-	modified:   lwechallenge/056-010-midmat.txt
-	modified:   lwechallenge/057-010-last-pump.txt
-	modified:   lwechallenge/057-010-midmat.txt
-	modified:   lwechallenge/057-010-solution.txt
-	modified:   lwechallenge/058-010-last-pump.txt
-	modified:   lwechallenge/058-010-midmat.txt
-	modified:   lwechallenge/058-010-solution.txt
+	modified:   g6k/algorithms/__pycache__/bkz_ds.cpython-38.pyc
+	modified:   g6k/utils/__pycache__/lwe_estimation.cpython-38.pyc
+	modified:   g6k/utils/__pycache__/util.cpython-38.pyc
+	modified:   implement_unsolved_lwechal.sh
+	modified:   kernel/libG6K.so
+	modified:   logs/ProPnjBKZ_for_lwe,cryptothesis-HP-Z8-G4-Workstation,2024-05-19_17:38,b'2024-04-13'-b'merge-enumbs-and-practical-cost-model'-b'e21e664'.log
 	modified:   lwechallenge/059-010-last-pump.txt
 	modified:   lwechallenge/059-010-midmat.txt
-	modified:   lwechallenge/060-010-last-pump.txt
-	modified:   lwechallenge/060-010-midmat.txt
-	modified:   lwechallenge/060-010-solution.txt
-	modified:   lwechallenge/061-010-last-pump.txt
 	modified:   lwechallenge/061-010-midmat.txt
-	modified:   lwechallenge/067-005-last-pump.txt
-	modified:   lwechallenge/067-005-midmat.txt
-	modified:   lwechallenge/067-005-solution.txt
-	modified:   lwechallenge/080-005-last-pump.txt
-	modified:   lwechallenge/080-005-midmat.txt
-	modified:   lwechallenge/080-005-solution.txt
 	modified:   mode_comparison.sh
-	modified:   pump_estimation.py
+	modified:   optimize-m/45-030-opm.log
+	modified:   optimize_m.sh
+	modified:   strategy-for-unsolved-lwechal/40-035-3.log
+	modified:   strategy-for-unsolved-lwechal/40-040.log
+	modified:   strategy-for-unsolved-lwechal/50-025.log
+	modified:   strategy-for-unsolved-lwechal/55-020.log
+	modified:   strategy-for-unsolved-lwechal/60-015.log
+	modified:   strategy-for-unsolved-lwechal/75-010.log
+	modified:   strategy-for-unsolved-lwechal/90-005.log
 	modified:   strategy_gen/build/temp.linux-x86_64-3.8/strategy_gen.o
+	modified:   strategy_gen/cython_debug/cython_debug_info_strategy_gen
 	modified:   strategy_gen/decl.pxd
-	modified:   strategy_gen/framework/bssa.cpp
-	modified:   strategy_gen/framework/bssa.h
-	modified:   strategy_gen/framework/cost.cpp
-	modified:   strategy_gen/framework/cost.h
-	modified:   strategy_gen/framework/enumbs.cpp
-	modified:   strategy_gen/framework/enumbs.h
 	modified:   strategy_gen/framework/libest.so
-	modified:   strategy_gen/framework/utils.cpp
+	modified:   strategy_gen/framework/strategy_simulation.cpp
+	modified:   strategy_gen/framework/strategy_simulation.h
 	modified:   strategy_gen/strategy_gen.cpp
 	modified:   strategy_gen/strategy_gen.cpython-38-x86_64-linux-gnu.so
 	modified:   strategy_gen/strategy_gen.pyx
 	modified:   strategy_simulation.py
 =================
-rebuild.sh 
+rebuild.sh -y
 =================

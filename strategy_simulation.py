@@ -65,33 +65,34 @@ def strategy_simulation(n,alpha,S,load_lwe = "lwe_instance", simulation="gsa",m=
     
     
     if(simulation=="actual_l"):
-        lwechal_simulation_actual_l(log2_rr, S,len(S),float_type = float_type)
+        return lwechal_simulation_actual_l(log2_rr, S,len(S),float_type = float_type)
     if(simulation=="gsa"):
-        lwechal_simulation_gsa(d, dvol, S,len(S),float_type = float_type)
+        return lwechal_simulation_gsa(d, dvol, S,len(S),float_type = float_type)
      
-     
-n = 40
-alpha = 0.030
-float_type = "dd"
-S = [(56, 8, 1), (80, 10, 1), (81, 10, 1), (102, 11, 1), (114, 11, 1), (119, 11, 1)]
-strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
 
-n = 40
-alpha = 0.025
-float_type = "dd"
-S = [(77, 8, 1), (81, 10, 1), (102, 11, 2)]
-strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+if __name__ == '__main__':
+    n = 40
+    alpha = 0.030
+    float_type = "dd"
+    S = [(56, 8, 1), (80, 10, 1), (81, 10, 1), (102, 11, 1), (114, 11, 1), (119, 11, 1)]
+    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
 
-
-n = 45
-alpha = 0.020
-float_type = "dd"
-S = [(70, 8, 1), (80, 10, 1), (102, 11, 2), (103, 11, 1)]
-strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+    n = 40
+    alpha = 0.025
+    float_type = "dd"
+    S = [(77, 8, 1), (81, 10, 1), (102, 11, 2)]
+    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
 
 
-n = 50
-alpha = 0.015
-float_type = "dd"
-S = [(56, 8, 1), (66, 9, 1), (80, 10, 1), (81, 10, 1), (102, 11, 2)]
-strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+    n = 45
+    alpha = 0.020
+    float_type = "dd"
+    S = [(70, 8, 1), (80, 10, 1), (102, 11, 2), (103, 11, 1)]
+    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+
+
+    n = 50
+    alpha = 0.015
+    float_type = "dd"
+    S = [(56, 8, 1), (66, 9, 1), (80, 10, 1), (81, 10, 1), (102, 11, 2)]
+    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
