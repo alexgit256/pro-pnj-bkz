@@ -609,7 +609,7 @@ private:
   static FT tabulated_ball_vol[PRUNER_MAX_N];
 
   FT epsilon  = std::pow(2., -7);  ///< Epsilon to use for numerical differentiation
-  FT min_step = std::pow(2., -6);  ///< Minimal step in a given direction
+  FT min_step = std::pow(2., -6);  ///< minimum step in a given direction
   FT min_cf_decrease =
       .995;  //< Maximal ratio of two consectuive cost_factor in the descent before stopping
   FT step_factor     = std::pow(2, .5);  ///< Increment factor for steps in a given direction

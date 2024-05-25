@@ -258,7 +258,7 @@ def lwe_kernel(arg0, params=None, seed=None):
             m0 = m1
             
         m = m0
-        print("Chose %d samples, the minimal expected time cost is %.3f sec" %(m, 2**Tmin))
+        print("Chose %d samples, the minimum expected time cost is %.3f sec" %(m, 2**Tmin))
         print()
     else:
         delta = compute_delta(2)
@@ -269,7 +269,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         log2_rr = [round((log2(rr[i])) - (log2(sigma)),5) for i in range(d)]
         blocksizes,Tmin = generate_strategy(log2_rr, strategy_method, max_jump, max_RAM,b)
         
-    print("Chose %d samples, the minimal expected time cost is %.3f sec" %(m, 2**Tmin))
+    print("Chose %d samples, the minimum expected time cost is %.3f sec" %(m, 2**Tmin))
     print()
     
     if(set_j1 == 1):

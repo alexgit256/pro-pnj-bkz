@@ -554,7 +554,7 @@ class basic_json
     > An implementation may set limits on the range and precision of numbers.
 
     When the default type is used, the maximal integer number that can be
-    stored is `9223372036854775807` (INT64_MAX) and the minimal integer number
+    stored is `9223372036854775807` (INT64_MAX) and the minimum integer number
     that can be stored is `-9223372036854775808` (INT64_MIN). Integer numbers
     that are out of range will yield over/underflow when used in a
     constructor. During deserialization, too large or small integer numbers
@@ -626,7 +626,7 @@ class basic_json
     > An implementation may set limits on the range and precision of numbers.
 
     When the default type is used, the maximal integer number that can be
-    stored is `18446744073709551615` (UINT64_MAX) and the minimal integer
+    stored is `18446744073709551615` (UINT64_MAX) and the minimum integer
     number that can be stored is `0`. Integer numbers that are out of range
     will yield over/underflow when used in a constructor. During
     deserialization, too large or small integer numbers will be automatically

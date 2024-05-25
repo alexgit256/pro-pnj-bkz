@@ -1,4 +1,4 @@
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 43.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 43.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 -------------------------
 Primal attack, LWE challenge n=40, alpha=0.0350
@@ -431,7 +431,11 @@ Starting svp pump_{21, 167, 24}
  143: ↑130   , RAM cost:166.0435 GB    
  143: ↑131   , RAM cost:161.2663 GB    
  143: ↑131   , RAM cost:188.5261 GB    
- 143: ↑132   , RAM cost:18 143: ↑137   , RAM cost:439.0831 GB     143: ↑138   , RAM cost:437.6203 GB     143: ↑138   , RAM cost:503.4186 GB     143: ↑139   , RAM cost:502.4772 GB    t:246.8131 GB    
+ 143: ↑132   , RAM cost:18
+ 143: ↑137   , RAM cost:439.0831 GB    
+ 143: ↑138   , RAM cost:437.6203 GB    
+ 143: ↑138   , RAM cost:503.4186 GB    
+ 143: ↑139   , RAM cost:502.4772 GB    t:246.8131 GB    
  143: ↑134   , RAM cost:292.0583 GB    
  143: ↑135   , RAM cost:284.1076 GB    
  143: ↑135   , RAM cost:336.7235 GB    

@@ -48,10 +48,10 @@ struct Params{
     //progressieve_sieve: True: progressieve sieve; False: normal sieve
     
     int threads = 10;
-    int max_dim = MAX_DIM; //set the maximal blocksize to find the expected minimal  strategy
+    int max_dim = MAX_DIM; //set the maximal blocksize to find the expected minimum  strategy
     double max_num = 1e3;
-    double max_RAM = 1000; //43.58; //=1.5TB , //no-limit, 300
-    int max_loop = 5; // 15; //set the maximal loop for one blocksize to find the expected minimal  strategy1
+    double max_RAM = 1000; //43.58 log2(bit)=1.5TB , //no-limit, 300
+    int max_loop = 5; // 15; //set the maximal loop for one blocksize to find the expected minimum  strategy1
 
     int method = 1; //1: enumbs estimation; 2: bssa estimation
 

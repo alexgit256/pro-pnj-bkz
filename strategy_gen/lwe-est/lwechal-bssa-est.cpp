@@ -7,7 +7,7 @@
 // argv[2]: max_loop value
 // argv[3]: cost model: 1.gate model 2.practical sec model
 // argv[4]: maximal dimension in enumeration
-// argv[5]: enumbs_min_G: 0-- false, find minimal RAM strategy; 1--true, find minimal time cost strategy
+// argv[5]: enumbs_min_G: 0-- false, find minimum RAM strategy; 1--true, find minimum time cost strategy
 // argv[6]: max_RAM
 // argv[7]: practical_pump_d4f
 // argv[8]: 1:tradional bssa; 2:improved bssa

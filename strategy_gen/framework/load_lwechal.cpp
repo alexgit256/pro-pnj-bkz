@@ -175,7 +175,7 @@ LWEchal* load_lwe_challenge(int n, double alpha_){
 }
 
 
-//min the minimal samples we should select for solving LWE through uSVP solver.
+//min the minimum samples we should select for solving LWE through uSVP solver.
 double find_m_in_gsa(int d, FP_NR<FT> dvol){
     /*
     input: d: dim of lattice 

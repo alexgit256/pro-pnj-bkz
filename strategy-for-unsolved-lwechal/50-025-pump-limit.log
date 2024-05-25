@@ -1,0 +1,18 @@
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 43.58 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+
+-------------------------
+Primal attack, LWE challenge n=50, alpha=0.0250
+Chose 219 samples. Predict solution at bkz-130 + svp-161
+
+GSO precision:  dd
+||b_1|| = 6265009, target_norm = 1286285
+Intial Slope = -0.05796, dim = 220, dvol = 412.4659700420456
+
+Cost for generate strategy through EnumBS: 686.47 sec
+Blocksize Strategy: [(77, 9, 1), (81, 10, 1), (102, 11, 2), (105, 11, 1), (115, 12, 1), (119, 12, 1), (127, 12, 1), (132, 13, 1), (140, 1, 1), (148, 1, 1)]
+
+
+There's no strategy whose cumulated G memory cost = 43.366182 log(bit)) is below 43.580000 log(bit), the lowest memory cost strategy is:
+bs = (slope = -3.263654e-02, G_BKZ = 1.771654e+01 log2(sec), B_BKZ = 4.015645e+01 log2(bit), cum-pr = 8.421931e-02, pump-{40,180,17}, G_dsvp = 2.224883e+01 log2(sec), B_dsvp = 4.320116e+01 log2(bit),  max_B_dsvp = 4.675581e+01 log2(bit), G = 2.230986e+01 log2(sec), B = 4.336618e+01 log2(bit),  min_GB.first = 2.221041e+01 log2(sec))
+S(beta,jump,tours):[(77,9,1),(81,10,1),(102,11,2),(105,11,1),(115,12,1),(119,12,1),(127,12,1),(132,13,1),(140,1,1),(148,1,1)]
+Min Cost = 22.31 log2(sec) = 5199220.40 s, Memory Cost = 43.37 log2(bit) = 1319.87 GB 

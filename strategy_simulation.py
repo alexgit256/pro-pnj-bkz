@@ -71,6 +71,7 @@ def strategy_simulation(n,alpha,S,load_lwe = "lwe_instance", simulation="gsa",m=
      
 
 if __name__ == '__main__':
+    """
     n = 40
     alpha = 0.030
     float_type = "dd"
@@ -95,4 +96,12 @@ if __name__ == '__main__':
     alpha = 0.015
     float_type = "dd"
     S = [(56, 8, 1), (66, 9, 1), (80, 10, 1), (81, 10, 1), (102, 11, 2)]
+    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+    """
+
+    n = 40
+    alpha = 0.035
+    float_type = "dd"
+    # S = [(72, 9, 1), (81, 10, 1), (102, 11, 1), (106, 11, 1), (117, 12, 1), (125, 13, 1), (133, 12, 1), (136, 1, 1)]
+    S = [(76, 8, 1), (91, 9, 1), (117, 10, 1), (117, 4, 1), (132, 4, 1), (141,4,1)]
     strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)

@@ -47,9 +47,9 @@ void EnumBS::print_bs(blocksize_strategy bs){
     // int d = int(bs.l.size());
     // double G1 = strategy_verification(l,BS[i].S).first;
     if(params.cost_model == 1)
-        printf("(slope = %e, G_BKZ = %e log2(gate), B_BKZ = %e log2(bit), cum-pr = %e, pump-{%d,%d,%d}, G_dsvp = %e log2(gate), B_dsvp = %e bit, G = %e log2(gate), B = %e log2(bit),  min_GB.first = %e log2(gate))\n",  bs.slope, bs.cum_avg_GB_BKZ.first, bs.cum_avg_GB_BKZ.second, bs.cum_pr, d- get<1>(bs.dsvp_t), get<1>(bs.dsvp_t), get<1>(bs.dsvp_t) - get<0>(bs.dsvp_t), get<2>(bs.dsvp_t),get<3>(bs.dsvp_t), log2(pow(2,get<2>(bs.dsvp_t)) + pow(2,bs.cum_avg_GB_BKZ.first)), max(bs.cum_avg_GB_BKZ.second,get<3>(bs.dsvp_t)), bs.min_GB.first);  
+        printf("(slope = %e, G_BKZ = %e log2(gate), B_BKZ = %e log2(bit), cum-pr = %e, pump-{%d,%d,%d}, G_dsvp = %e log2(gate), B_dsvp = %e log2(bit), max_B_dsvp = %e log2(bit), G = %e log2(gate), B = %e log2(bit),  min_GB.first = %e log2(gate))\n",  bs.slope, bs.cum_avg_GB_BKZ.first, bs.cum_avg_GB_BKZ.second, bs.cum_pr, d- get<1>(bs.dsvp_t), get<1>(bs.dsvp_t), get<1>(bs.dsvp_t) - get<0>(bs.dsvp_t), get<2>(bs.dsvp_t),get<3>(bs.dsvp_t), (cost->pump_cost(get<0>(bs.dsvp_t),params.cost_model)).second, bs.GB.first, bs.GB.second, bs.min_GB.first);  
     if(params.cost_model >= 2)
-        printf("(slope = %e, G_BKZ = %e log2(sec), B_BKZ = %e log2(bit), cum-pr = %e, pump-{%d,%d,%d}, G_dsvp = %e log2(sec), B_dsvp = %e bit, G = %e log2(sec), B = %e log2(bit),  min_GB.first = %e log2(sec))\n",  bs.slope, bs.cum_avg_GB_BKZ.first, bs.cum_avg_GB_BKZ.second, bs.cum_pr, d- get<1>(bs.dsvp_t), get<1>(bs.dsvp_t), get<1>(bs.dsvp_t) - get<0>(bs.dsvp_t), get<2>(bs.dsvp_t),get<3>(bs.dsvp_t), log2(pow(2,get<2>(bs.dsvp_t)) + pow(2,bs.cum_avg_GB_BKZ.first)), max(bs.cum_avg_GB_BKZ.second,get<3>(bs.dsvp_t)), bs.min_GB.first);  
+        printf("(slope = %e, G_BKZ = %e log2(sec), B_BKZ = %e log2(bit), cum-pr = %e, pump-{%d,%d,%d}, G_dsvp = %e log2(sec), B_dsvp = %e log2(bit),  max_B_dsvp = %e log2(bit), G = %e log2(sec), B = %e log2(bit),  min_GB.first = %e log2(sec))\n",  bs.slope, bs.cum_avg_GB_BKZ.first, bs.cum_avg_GB_BKZ.second, bs.cum_pr, d- get<1>(bs.dsvp_t), get<1>(bs.dsvp_t), get<1>(bs.dsvp_t) - get<0>(bs.dsvp_t), get<2>(bs.dsvp_t),get<3>(bs.dsvp_t), (cost->pump_cost(get<0>(bs.dsvp_t),params.cost_model)).second, bs.GB.first, bs.GB.second,  bs.min_GB.first);  
     print_strategy(bs.S);
 }
 
@@ -888,7 +888,7 @@ void EnumBS::max_tour_for_pnjbkz_beta_in_parallel( int beta_j_t_id_begin, vector
 void EnumBS::enumbs_est(vector<double> l0){
     /*
     input: l -- gs-lengths; 
-    Return: expected minimal  strategy to minimize solving cost->
+    Return: expected minimum  strategy to minimize solving cost->
     */
     int beta_start = params.beta_start, k = 0, d = l0.size(),j_start,len_S;
     
@@ -1009,18 +1009,37 @@ void EnumBS::enumbs_est(vector<double> l0){
     printf("\n");
     //print_BS(BS);
 
-    //Find the expected minimal  strategy
+    //Find the expected minimum  strategy
     double Gmin = params.max_num, Bmin  = params.max_num;
     EnumBS::blocksize_strategy bsmin;
+    bool flag = false;
     for(int i = 0; i<int(BS.size()); i++){
-        
-        if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM  and (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second <= params.max_RAM){ 
+        if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM and (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second <= params.max_RAM){
+        // if(BS[i].GB.first < Gmin && BS[i].GB.second <= params.max_RAM ){
             bsmin = BS[i];
             Gmin = BS[i].GB.first;
             Bmin = BS[i].GB.second;
+            flag = true;
         }
     }
-    printf("Find the expected minimal  Strategy through EumBS!!\n");
+    if(flag){
+        printf("Find the expected minimum  Strategy through EumBS!!\n");
+    }
+    else{
+        bsmin = BS[0];
+        Gmin = BS[0].GB.first;
+        Bmin = BS[0].GB.second;
+        for(int i = 1; i<int(BS.size()); i++){
+            // if(max(BS[i].GB.second, (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second) < max(Bmin, (cost->pump_cost(get<0>(bsmin.dsvp_t),params.cost_model)).second)){
+            if(BS[i].GB.second < Bmin){
+                bsmin = BS[i];
+                Gmin = BS[i].GB.first;
+                Bmin = BS[i].GB.second;
+            }
+        }
+        printf("There's no strategy whose cumulated G memory cost = %lf log(bit)) is below %lf log(bit), the lowest memory cost strategy is:\n", Bmin,  params.max_RAM);
+    }
+    printf("Find the expected minimum  Strategy through EumBS!!\n");
     print_bs(bsmin);
     if(params.cost_model == 1)
         printf("Min Cost = %3.2f log2(gate), Memory Cost = %3.2f log2(bit)\n", Gmin, Bmin);
@@ -1036,7 +1055,7 @@ void EnumBS::enumbs_est_in_parallel(double* l_array){
 // void EnumBS::enumbs_est_in_parallel(vector<double> l0){
  /*
     input: l_array -- gs-lengths;
-    Return: expected minimal  strategy to minimize solving cost->
+    Return: expected minimum  strategy to minimize solving cost->
     */
 // void EnumBS::enumbs_est_in_parallel(int dim, double dvol){
     /*
@@ -1245,13 +1264,14 @@ void EnumBS::enumbs_est_in_parallel(double* l_array){
     }
     printf("\n");
 
-    //Find the expected minimal  strategy
+    //Find the expected minimum  strategy
     double Gmin = params.max_num, Bmin  = params.max_num;
     
     bool flag = false;
     // print_BS(BS);
     for(int i = 0; i<int(BS.size()); i++){
         if(BS[i].GB.first<Gmin and BS[i].GB.second <= params.max_RAM and (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second <= params.max_RAM){
+        // if(BS[i].GB.first < Gmin && BS[i].GB.second <= params.max_RAM ){
             bsmin = BS[i];
             Gmin = BS[i].GB.first;
             Bmin = BS[i].GB.second;
@@ -1259,17 +1279,21 @@ void EnumBS::enumbs_est_in_parallel(double* l_array){
         }
     }
     if(flag){
-        printf("Find the expected minimal  Strategy through EumBS!!\n");
+        printf("Find the expected minimum  Strategy through EumBS!!\n");
     }
     else{
-        for(int i = 0; i<int(BS.size()); i++){
-            if(BS[i].GB.second<Bmin){
+        bsmin = BS[0];
+        Gmin = BS[0].GB.first;
+        Bmin = BS[0].GB.second;
+        for(int i = 1; i<int(BS.size()); i++){
+            // if(max(BS[i].GB.second, (cost->pump_cost(get<0>(BS[i].dsvp_t),params.cost_model)).second) < max(Bmin, (cost->pump_cost(get<0>(bsmin.dsvp_t),params.cost_model)).second)){
+            if(BS[i].GB.second < Bmin){
                 bsmin = BS[i];
                 Gmin = BS[i].GB.first;
                 Bmin = BS[i].GB.second;
             }
         }
-        printf("There's no strategy whose memory cost (%lf log(bit)) is below %lf log(bit), the lowest memory cost strategy is:\n", Bmin, params.max_RAM);
+        printf("There's no strategy whose cumulated G memory cost = %lf log(bit)) is below %lf log(bit), the lowest memory cost strategy is:\n", Bmin,  params.max_RAM);
     }
     print_bs(bsmin);
     if(params.cost_model == 1)

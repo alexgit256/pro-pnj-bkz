@@ -109,10 +109,10 @@ static constexpr unsigned int DUAL_HELPER_DIM = (NOYR)?0:20;
 static constexpr unsigned int DUAL_HELPER_VECS = (NOYR)?0:64;
 static constexpr unsigned int OTF_LIFT_HELPER_DIM = (NOYR)?0:20;
 
-#define REDUCE_LEN_MARGIN 1.001         // Minimal improvement ratio to trigger a reduction
+#define REDUCE_LEN_MARGIN 1.001         // minimum improvement ratio to trigger a reduction
                                         // (make sure of worthy progress, avoid infinite loops due to numerical-errors)
 
-#define REDUCE_LEN_MARGIN_HALF 1.001    // Minimal improvement ratio to validate a reduction
+#define REDUCE_LEN_MARGIN_HALF 1.001    // minimum improvement ratio to validate a reduction
 
 #define CACHE_BLOCK 512                 // Local loops length for cache-friendlyness. Note that triple_sieve_mt has its separate variable for that.
 
@@ -459,7 +459,7 @@ public:
                                            // value implies a resort after having replaced 15% of
                                            // vectors in the database
 
-  size_t bgj1_transaction_bulk_size = 0;    // minimal size of transaction_db to launch
+  size_t bgj1_transaction_bulk_size = 0;    // minimum size of transaction_db to launch
                                             // execute_delayed_insert; 0 means AUTO, i.e. 10 +
                                             // 2*threads.
   std::string simhash_codes_basedir = ".";  // directory holding spherical codes for simhash.

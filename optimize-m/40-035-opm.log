@@ -1,4 +1,4 @@
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 -------------------------
 Primal attack, LWE challenge n=40, alpha=0.0350
@@ -6,135 +6,135 @@ Primal attack, LWE challenge n=40, alpha=0.0350
 
 Chose 191 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.505231e-02, G_BKZ = 1.074464e+01 log2(sec), B_BKZ = 3.810510e+01 log2(bit), cum-pr = 4.590969e-02, pump-{25,167,16}, G_dsvp = 1.750455e+01 log2(sec), B_dsvp = 4.100867e+01 bit, G = 1.751781e+01 log2(sec), B = 4.100867e+01 log2(bit),  min_GB.first = 1.751781e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(56,7,1),(62,8,1),(68,9,1),(81,10,2),(104,11,1),(106,11,1),(118,11,1),(133,12,1),(142,13,1)]
 Min Cost = 17.52 log2(sec) = 187665.67 s, Memory Cost = 41.19 log2(bit) = 291.96 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 162.92 sec
 
 
 Chose 187 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.513098e-02, G_BKZ = 1.057469e+01 log2(sec), B_BKZ = 3.811657e+01 log2(bit), cum-pr = 4.560807e-02, pump-{21,167,16}, G_dsvp = 1.746586e+01 log2(sec), B_dsvp = 4.100440e+01 bit, G = 1.747796e+01 log2(sec), B = 4.100440e+01 log2(bit),  min_GB.first = 1.747796e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(66,7,1),(79,8,1),(81,10,2),(102,11,1),(103,11,1),(119,12,1),(129,12,1),(142,12,1)]
 Min Cost = 17.48 log2(sec) = 182553.88 s, Memory Cost = 41.19 log2(bit) = 291.48 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 169.90 sec
 
 
 Chose 197 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.494227e-02, G_BKZ = 1.077272e+01 log2(sec), B_BKZ = 3.796343e+01 log2(bit), cum-pr = 4.115520e-02, pump-{31,167,16}, G_dsvp = 1.764268e+01 log2(sec), B_dsvp = 4.108460e+01 bit, G = 1.765497e+01 log2(sec), B = 4.108460e+01 log2(bit),  min_GB.first = 1.765497e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(56,7,1),(62,8,1),(74,9,1),(81,10,2),(102,11,1),(105,11,1),(115,12,1),(119,12,1),(131,12,1),(142,12,1)]
 Min Cost = 17.65 log2(sec) = 206383.08 s, Memory Cost = 41.24 log2(bit) = 302.66 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 248.08 sec
 
 
 Chose 191 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.505231e-02, G_BKZ = 1.074464e+01 log2(sec), B_BKZ = 3.810510e+01 log2(bit), cum-pr = 4.590969e-02, pump-{25,167,16}, G_dsvp = 1.750455e+01 log2(sec), B_dsvp = 4.100867e+01 bit, G = 1.751781e+01 log2(sec), B = 4.100867e+01 log2(bit),  min_GB.first = 1.751781e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(56,7,1),(62,8,1),(68,9,1),(81,10,2),(104,11,1),(106,11,1),(118,11,1),(133,12,1),(142,13,1)]
 Min Cost = 17.52 log2(sec) = 187665.67 s, Memory Cost = 41.19 log2(bit) = 291.96 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 162.22 sec
 
 
 Chose 187 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.513098e-02, G_BKZ = 1.057469e+01 log2(sec), B_BKZ = 3.811657e+01 log2(bit), cum-pr = 4.560807e-02, pump-{21,167,16}, G_dsvp = 1.746586e+01 log2(sec), B_dsvp = 4.100440e+01 bit, G = 1.747796e+01 log2(sec), B = 4.100440e+01 log2(bit),  min_GB.first = 1.747796e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(66,7,1),(79,8,1),(81,10,2),(102,11,1),(103,11,1),(119,12,1),(129,12,1),(142,12,1)]
 Min Cost = 17.48 log2(sec) = 182553.88 s, Memory Cost = 41.19 log2(bit) = 291.48 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 168.97 sec
 
 
 Chose 192 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.496238e-02, G_BKZ = 1.134665e+01 log2(sec), B_BKZ = 3.869713e+01 log2(bit), cum-pr = 5.957898e-02, pump-{26,167,16}, G_dsvp = 1.751591e+01 log2(sec), B_dsvp = 4.097761e+01 bit, G = 1.753582e+01 log2(sec), B = 4.097761e+01 log2(bit),  min_GB.first = 1.753582e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(70,7,1),(79,8,1),(81,10,1),(102,11,1),(103,11,1),(114,12,1),(119,11,1),(131,13,1),(143,13,1)]
 Min Cost = 17.54 log2(sec) = 190024.12 s, Memory Cost = 41.25 log2(bit) = 303.94 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 166.90 sec
 
 
 Chose 191 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.505231e-02, G_BKZ = 1.074464e+01 log2(sec), B_BKZ = 3.810510e+01 log2(bit), cum-pr = 4.590969e-02, pump-{25,167,16}, G_dsvp = 1.750455e+01 log2(sec), B_dsvp = 4.100867e+01 bit, G = 1.751781e+01 log2(sec), B = 4.100867e+01 log2(bit),  min_GB.first = 1.751781e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(56,7,1),(62,8,1),(68,9,1),(81,10,2),(104,11,1),(106,11,1),(118,11,1),(133,12,1),(142,13,1)]
 Min Cost = 17.52 log2(sec) = 187665.67 s, Memory Cost = 41.19 log2(bit) = 291.96 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 161.80 sec
 
 
 Chose 187 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.513098e-02, G_BKZ = 1.057469e+01 log2(sec), B_BKZ = 3.811657e+01 log2(bit), cum-pr = 4.560807e-02, pump-{21,167,16}, G_dsvp = 1.746586e+01 log2(sec), B_dsvp = 4.100440e+01 bit, G = 1.747796e+01 log2(sec), B = 4.100440e+01 log2(bit),  min_GB.first = 1.747796e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(66,7,1),(79,8,1),(81,10,2),(102,11,1),(103,11,1),(119,12,1),(129,12,1),(142,12,1)]
 Min Cost = 17.48 log2(sec) = 182553.88 s, Memory Cost = 41.19 log2(bit) = 291.48 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 169.03 sec
 
 
 Chose 189 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.488003e-02, G_BKZ = 1.205380e+01 log2(sec), B_BKZ = 3.937157e+01 log2(bit), cum-pr = 8.275488e-02, pump-{24,166,16}, G_dsvp = 1.745069e+01 log2(sec), B_dsvp = 4.088075e+01 bit, G = 1.748453e+01 log2(sec), B = 4.088075e+01 log2(bit),  min_GB.first = 1.748453e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(68,7,1),(78,8,1),(81,10,2),(102,11,1),(106,11,1),(119,12,1),(131,12,1),(144,12,1)]
 Min Cost = 17.48 log2(sec) = 183386.68 s, Memory Cost = 41.32 log2(bit) = 318.49 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 164.61 sec
 
 
 Chose 191 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.505231e-02, G_BKZ = 1.074464e+01 log2(sec), B_BKZ = 3.810510e+01 log2(bit), cum-pr = 4.590969e-02, pump-{25,167,16}, G_dsvp = 1.750455e+01 log2(sec), B_dsvp = 4.100867e+01 bit, G = 1.751781e+01 log2(sec), B = 4.100867e+01 log2(bit),  min_GB.first = 1.751781e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(56,7,1),(62,8,1),(68,9,1),(81,10,2),(104,11,1),(106,11,1),(118,11,1),(133,12,1),(142,13,1)]
 Min Cost = 17.52 log2(sec) = 187665.67 s, Memory Cost = 41.19 log2(bit) = 291.96 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 162.52 sec
 
 
 Chose 187 samples, and try to find the optimized strategy through enumbs
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.513098e-02, G_BKZ = 1.057469e+01 log2(sec), B_BKZ = 3.811657e+01 log2(bit), cum-pr = 4.560807e-02, pump-{21,167,16}, G_dsvp = 1.746586e+01 log2(sec), B_dsvp = 4.100440e+01 bit, G = 1.747796e+01 log2(sec), B = 4.100440e+01 log2(bit),  min_GB.first = 1.747796e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(66,7,1),(79,8,1),(81,10,2),(102,11,1),(103,11,1),(119,12,1),(129,12,1),(142,12,1)]
 Min Cost = 17.48 log2(sec) = 182553.88 s, Memory Cost = 41.19 log2(bit) = 291.48 GB 
-EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimal time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
+EnumBS Strategy Generation:v1. beta_start= 50, gap = 1, J = 100, J_gap = 1, cost_model = 3, max_loop = 5,  G_prec = 1.000000e-03,  slope_prec = 1.000000e-04,  progressive_sieve = True, worst_case = 0, succ_prob = 0.999, max_RAM = 1000.00 log2(bit), threads = 10, Find expected minimum time cost strategy, average_case, practical_pnjbkz_d4f = 3, practical_pump_d4f = 5, adjust beta_ as after 2023.1.31 [WWW, asiaccs2023], jump upper bound = min(asiaccs_d4f(beta,slope), pessitive d4f(beta)).
 
 Cost for generate strategy through EnumBS: 170.40 sec
 
 
 Chose 188 samples, and try to find the optimized strategy through enumbs
 Cost for generate strategy through EnumBS: 175.73 sec
-Chose 187 samples, the minimal expected time cost is 182553.880 sec
+Chose 187 samples, the minimum expected time cost is 182553.880 sec
 
-Chose 187 samples, the minimal expected time cost is 182553.880 sec
+Chose 187 samples, the minimum expected time cost is 182553.880 sec
 
 Blocksize Strategy: [(50, 1, 1), (66, 7, 1), (79, 8, 1), (81, 10, 2), (102, 11, 1), (103, 11, 1), (119, 12, 1), (129, 12, 1), (142, 12, 1)]
 
 
-Find the expected minimal  Strategy through EumBS!!
+Find the expected minimum  Strategy through EumBS!!
 bs = (slope = -3.510365e-02, G_BKZ = 1.062177e+01 log2(sec), B_BKZ = 3.812531e+01 log2(bit), cum-pr = 4.597208e-02, pump-{22,167,16}, G_dsvp = 1.746620e+01 log2(sec), B_dsvp = 4.099961e+01 bit, G = 1.747870e+01 log2(sec), B = 4.099961e+01 log2(bit),  min_GB.first = 1.747870e+01 log2(sec))
 S(beta,jump,tours):[(50,1,1),(66,7,1),(78,8,1),(81,10,2),(103,11,2),(119,12,1),(130,12,1),(142,12,1)]
 Min Cost = 17.48 log2(sec) = 182647.47 s, Memory Cost = 41.18 log2(bit) = 290.83 GB 

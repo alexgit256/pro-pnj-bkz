@@ -429,11 +429,11 @@ cdef class SieverParams(object):
         del self._pyattr[key]
 
 
-    def dict(self, minimal=False):
+    def dict(self, minimum=False):
         """
         Return a dictionary for all attributes of this params object.
 
-        :param minimal: If ``True`` only return those attributes that do not match the default
+        :param minimum: If ``True`` only return those attributes that do not match the default
             value.
 
         EXAMPLE::
@@ -448,7 +448,7 @@ cdef class SieverParams(object):
 
         """
         d = {}
-        if not minimal:
+        if not minimum:
             for k in self.known_attributes:
                 d[k] = self._get(k)
             for k, v in self._pyattr.items():
@@ -507,7 +507,7 @@ cdef class SieverParams(object):
             SieverParams({'foo': 2, 'otf_lift': False})
 
         """
-        d = self.dict(minimal=True)
+        d = self.dict(minimum=True)
         d.update(kwds)
         return self.__class__(**d)
 
@@ -549,7 +549,7 @@ cdef class SieverParams(object):
             SieverParams({})
 
         """
-        return "%s(%s)"%(self.__class__.__name__,self.dict(minimal=True))
+        return "%s(%s)"%(self.__class__.__name__,self.dict(minimum=True))
 
     def __reduce__(self):
         """

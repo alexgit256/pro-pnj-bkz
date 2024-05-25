@@ -17,7 +17,7 @@ def workout(g6k, tracer, kappa, blocksize, dim4free_min=0,              # Main p
     :param tracer: A tracer for g6k
     :param kappa: beginning of the block
     :param blocksize: dimension of the block
-    :param dim4free_min: Minimal number of dimension for free ``dimension for free'' [Ducas,
+    :param dim4free_min: minimum number of dimension for free ``dimension for free'' [Ducas,
         Eurcrypt 2018] (may stop before reaching that if goal_r0)
     :param dim4free_dec: By how much do we decreaseee dim4free at each iteration
     :param start_n: Dimension of the first pump

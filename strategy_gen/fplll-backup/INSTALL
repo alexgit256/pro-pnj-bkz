@@ -210,7 +210,7 @@ you can use the `configure' options `--x-includes=DIR' and
 
    Some packages offer the ability to configure how verbose the
 execution of `make' will be.  For these packages, running `./configure
---enable-silent-rules' sets the default to minimal output, which can be
+--enable-silent-rules' sets the default to minimum output, which can be
 overridden with `make V=1'; while running `./configure
 --disable-silent-rules' sets the default to verbose, which can be
 overridden with `make V=0'.

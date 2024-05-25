@@ -42,7 +42,7 @@ public:
   /**
      @brief LLL reduction.
 
-     @param kappa_min minimal index to go back to
+     @param kappa_min minimum index to go back to
      @param kappa_start index to start processing at
      @param kappa_end end index (exclusive)
      @param size_reduction_start only perform size reductions using vectors starting at this index

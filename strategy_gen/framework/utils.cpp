@@ -838,7 +838,7 @@ void print_param_setting(Params params){
     if(params.method == 1)
         printf("threads = %d, ", params.threads);
     if(params.enumbs_min_G)
-        printf("Find expected minimal time cost strategy, ");
+        printf("Find expected minimum time cost strategy, ");
     else
         printf("Find a strategy below the maximal RAM = %f log2(bit), ", params.max_RAM);
     if(params.worst_case)

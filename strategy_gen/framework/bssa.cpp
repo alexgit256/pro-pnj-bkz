@@ -559,6 +559,7 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
 
 
     //Find the optimized strategy
+    bool flag = false;
     double Gmin = params.max_num, Bmin  = params.max_num, G1, G2, G,  B;
     for (map<int, BSSA::blocksize_strategy> ::iterator it = BS.begin(); it != BS.end(); it++) {
         tuple<int,int,double,double,double> dsvp_t0 = dsvp_predict(it->second.l, it->second.cum_pr, cost,params.cost_model, it->second.cum_GB_BKZ);
@@ -574,7 +575,34 @@ void BSSA::bssa_est(double* l_array, int sbeta, int gbeta){
             bsmin = it->second;
             Gmin = G;
             Bmin = B;
+            flag = true;
         }
+    }
+    if(flag){
+        printf("Find the approximate minimum  Strategy through BSSA!!\n");
+    }
+    else{
+        bsmin = BS[0];
+        tuple<int,int,double,double,double> dsvp_t0 = dsvp_predict(bsmin.l, bsmin.cum_pr, cost,params.cost_model, bsmin.cum_GB_BKZ);
+        G1 = bsmin.cum_avg_GB_BKZ.first;
+        G2 = get<2>(dsvp_t0);
+        Gmin = log2(pow(2,G1)+pow(2,G2));
+        Bmin = max(log2(pow(2,get<3>(dsvp_t0))+pow(2,bsmin.cum_avg_GB_BKZ.second)),(cost->pump_cost(get<0>(dsvp_t0),params.cost_model)).second);
+        for(int i = 1; i<int(BS.size()); i++){
+            // dsvp_t0 = dsvp_predict(BS[i].l, BS[i].cum_pr, cost,params.cost_model, BS[i].cum_GB_BKZ);
+            // tuple<int,int,double,double,double>  dsvp_tmin = dsvp_predict(bsmin.l, bsmin.cum_pr, cost,params.cost_model, bsmin.cum_GB_BKZ);
+            // if(max(log2(pow(2,get<3>(dsvp_t0))+pow(2,BS[i].cum_avg_GB_BKZ.second)),(cost->pump_cost(get<0>(dsvp_t0),params.cost_model)).second)<max(log2(pow(2,get<3>(dsvp_t0))+pow(2,bsmin.cum_avg_GB_BKZ.second)),(cost->pump_cost(get<0>(dsvp_tmin),params.cost_model)).second)){
+            if(log2(pow(2,get<3>(dsvp_t0))+pow(2,BS[i].cum_avg_GB_BKZ.second)) < log2(pow(2,get<3>(dsvp_t0))+pow(2,bsmin.cum_avg_GB_BKZ.second))){
+                bsmin = BS[i];
+               G1 = bsmin.cum_avg_GB_BKZ.first;
+                G2 = get<2>(dsvp_t0);
+                Gmin = log2(pow(2,G1)+pow(2,G2));
+                Bmin = max(log2(pow(2,get<3>(dsvp_t0))+pow(2,bsmin.cum_avg_GB_BKZ.second)),(cost->pump_cost(get<0>(dsvp_t0),params.cost_model)).second);
+            }
+        }
+        // printf("There's no strategy whose max(cumulated G, Pump) memory cost = max(%lf, %lf) log(bit)) is below %lf log(bit), the lowest memory cost strategy is:\n", Bmin,  (cost->pump_cost(get<0>(dsvp_predict(bsmin.l, bsmin.cum_pr, cost,params.cost_model, bsmin.cum_GB_BKZ)),params.cost_model)).second, params.max_RAM);
+
+        printf("There's no strategy whose cumulated G memory cost = %lf log(bit)) is below %lf log(bit), the lowest memory cost strategy is:\n", Bmin, params.max_RAM);
     }
     printf("Find the optimized Strategy through BSSA!!\n");
     print_bs(bsmin);

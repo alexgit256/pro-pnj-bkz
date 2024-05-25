@@ -810,7 +810,7 @@ void Siever::gauss_triple_mt_init_metainfo(size_t const already_processed, Compr
     decreasing during the algorithm.
 
     NOTE:   We do NOT multiply the obtained length by a factor 1-epsilon. In particular, if all database elements
-            have the same length, we might make only minimal progress.
+            have the same length, we might make only minimum progress.
 
     NOTE: It might be worthwhile to experiment with different bounding functions. Since both list and queue parts are sorted,
     finding the actual TS_improvement_db_ration * db_size's largest element is actually possible in
