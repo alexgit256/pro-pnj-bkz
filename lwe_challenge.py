@@ -153,66 +153,7 @@ def lwe_kernel(arg0, params=None, seed=None):
     else:
         blocksizes = list(range(10, 50)) + [b-20, b-17] + list(range(b - 14, d, 2))
     
-    
-    
-    
-    #Add for continue test
-    blocksizes = list(range(150, d, 2))
-    T_BKZ = 2541124.378 + 752059.558 + 922628.376
-    T0_BKZ += T_BKZ
-    T0 += T_BKZ
-    blocksize = 148
-    # overdoing n_max would allocate too much memory, so we are careful
-    if(True):
-        svp_Tmax = svp_bkz_time_factor * T_BKZ
-        n_max = int(58 + 2.85 * log(svp_Tmax * params.threads)/log(2.))
 
-        rr = [g6k.M.get_r(i, i) for i in range(d)]
-        for n_expected in range(2, d-2):
-            x = (target_norm/goal_margin) * n_expected/(1.*d)
-            if 4./3 * gaussian_heuristic(rr[d-n_expected:]) > x:
-                break
-
-        print( "Without otf, would expect solution at pump-%d. n_max=%d in the given time." % (n_expected, n_max)) # noqa
-        if n_expected < n_max - 1:
-            n_max += 1
-
-            # Larger SVP
-
-            llb = d - blocksize
-            while gaussian_heuristic([g6k.M.get_r(i, i) for i in range(llb, d)]) < target_norm * (d - llb)/(1.*d): # noqa
-                llb -= 1
-
-            f = d-llb-n_max
-            if verbose:
-                print("Starting svp pump_{%d, %d, %d}, n_max = %d, Tmax= %.2f sec" % (llb, d-llb, f, n_max, svp_Tmax)) # noqa
-            pump(g6k, tracer, llb, d-llb, f, verbose=verbose,
-                 goal_r0=target_norm * (d - llb)/(1.*d))
-
-            if verbose:
-                slope = basis_quality(g6k.M)["/"]
-                fmt = "\n slope: %.5f, walltime: %.3f sec"
-                print( fmt % (slope, time.time() - T0))
-                print()
-
-            g6k.lll(0, g6k.full_n)
-            T0_BKZ = time.time()
-            
-
-        if g6k.M.get_r(0, 0) <= target_norm:
-            print("Finished! TT=%.2f sec" % (time.time() - T0))
-            print( g6k.M.B[0])
-            alpha_ = int(alpha*1000)
-            filename = 'lwechallenge/%03d-%03d-solution.txt' % (n, alpha_)
-            fn = open(filename, "w")
-            fn.write(str(g6k.M.B[0]))
-            fn.close()
-            return
-
-    
-    
-    
-    
     
     for blocksize in blocksizes:
         for tt in range(tours):
