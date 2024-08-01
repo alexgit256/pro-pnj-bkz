@@ -30,4 +30,4 @@ python ProPnjBKZ_for_lwe.py 90 --lwe/alpha 0.005 --gpus 2 --threads 32 --verbose
 
 
 # # #default g6k.
-# python lwe_challenge.py 40 --lwe/alpha 0.035 --threads 60 --gpus 2 --verbose True --pump/down_sieve True | tee "strategy-for-unsolved-lwechal"/40-035-default-g6k.log
+# python lwe_challenge.py 40 --lwe/alpha 0.035 --threads 32 --gpus 2 --verbose True --pump/down_sieve True | tee "strategy-for-unsolved-lwechal/40-035-default-g6k.log"

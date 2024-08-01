@@ -471,7 +471,7 @@ def load_lwe_challenge_mid(n=40, alpha=0.005):
     if not os.path.isdir(start):
         os.mkdir(start)
     
-    end = "{n:03d}-{alpha:03d}-midmat.txt".format(n=n, alpha=alpha)
+    end = "{n:03d}-{alpha:03d}-midmat-default-g6k.txt".format(n=n, alpha=alpha)
     filename = os.path.join(start, end)
     try:
         data = open(filename, "r").readlines()
