@@ -11,7 +11,7 @@ def strategy_simulation(n,alpha,S,load_lwe = "lwe_instance", simulation="gsa",m=
         A, c, q = load_lwe_instance(n=n, alpha=alpha)
     if(load_lwe == "lwe_challenge" or load_lwe is None):
         A, c, q = load_lwe_challenge(n=n, alpha=alpha)
-    
+
     print("-------------------------")
     print("Primal attack, LWE challenge n=%d, alpha=%.4f" % (n, alpha))
 
@@ -38,14 +38,14 @@ def strategy_simulation(n,alpha,S,load_lwe = "lwe_instance", simulation="gsa",m=
     target_norm = 1.5 * (alpha*q)**2 * m + 1
     # target_norm = max( target_norm, 0.98 * full_gh)
 
-    
+
     # B_=load_lwe_challenge_mid(n=n, alpha=alpha)
     # if B_ is not None:
     #     B = B_
-    # else: 
+    # else:
     #     B = primal_lattice_basis(A, c, q, m=m)
     B = primal_lattice_basis(A, c, q, m=m) #debug
-    
+
     params = None
 
     g6k = Siever(B, params,float_type=float_type)
@@ -60,15 +60,15 @@ def strategy_simulation(n,alpha,S,load_lwe = "lwe_instance", simulation="gsa",m=
     sigma = alpha * q
     dvol = g6k.M.get_log_det(0,d)/2. - log(sigma)*d
     print("Intial Slope = %.5f, dim = %d, dvol = %3.13f\n" %(slope, d, dvol))
-    
+
     log2_rr = [round((log2(g6k.M.get_r(i,i))/2.) - (log2(sigma)),5) for i in range(d)]
-    
-    
+
+
     if(simulation=="actual_l"):
         return lwechal_simulation_actual_l(log2_rr, S,len(S),float_type = float_type)
     if(simulation=="gsa"):
         return lwechal_simulation_gsa(d, dvol, S,len(S),float_type = float_type)
-     
+
 
 if __name__ == '__main__':
     """
@@ -104,4 +104,6 @@ if __name__ == '__main__':
     float_type = "dd"
     # S = [(72, 9, 1), (81, 10, 1), (102, 11, 1), (106, 11, 1), (117, 12, 1), (125, 13, 1), (133, 12, 1), (136, 1, 1)]
     S = [(76, 8, 1), (91, 9, 1), (117, 10, 1), (117, 4, 1), (132, 4, 1), (141,4,1)]
-    strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+    simout = strategy_simulation(n,alpha,S,load_lwe="lwe_challenge", simulation="actual_l",float_type = float_type)
+    print(" - - - simout - - -")
+    print(simout)

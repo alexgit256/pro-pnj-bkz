@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 from math import pi,exp,log,sqrt,lgamma
 from math import pi,e, lgamma, log, pi, log2
-from scipy.special import chdtr 
+from scipy.special import chdtr
 from fpylll.util import gaussian_heuristic
 from g6k.utils.cost import  dim4free_wrapper, theo_dim4free_fun2
 from cost import get_pump_time
@@ -15,7 +15,7 @@ def pump_estimation(rr,q, alpha, succ_prob = 0.999):
     Return min pump time cost estimate according to progressive sieve following [Duc18]
 
     :param rr: vector of squared Gram-Schmidt norms
-    :param q: LWE param, to compute sigma 
+    :param q: LWE param, to compute sigma
     :param alpha: LWE param, to compute sigma, alpha*q = sigma
 
     """
@@ -37,10 +37,11 @@ def pump_estimation(rr,q, alpha, succ_prob = 0.999):
         f = dim4free_wrapper(theo_dim4free_fun2, beta)
         PSC +=  get_pump_time(beta-f, d) * (psvp-pre_psvp)
         pre_psvp = psvp
+    # if(flag):
+    #     return log2(PSC), beta
+    # else:
+    #     return log2(PSC), d+1
     if(flag):
-        return log2(PSC), beta
+        return (PSC), beta
     else:
-        return log2(PSC), d+1
-
-
-
+        return (PSC), d+1

@@ -35,6 +35,7 @@ from collections import OrderedDict # noqa
 from math import log,sqrt, log2, floor
 
 from fpylll import BKZ as fplll_bkz
+from fpylll import IntegerMatrix, GSO
 from fpylll.algorithms.bkz2 import BKZReduction
 from fpylll.tools.quality import basis_quality
 
@@ -54,6 +55,7 @@ from strategy_gen.strategy_gen import EnumBS, BSSA
 from numpy import float64
 from fpylll.util import gaussian_heuristic
 
+import numpy as np
 
 def theo_dim4free2_in_B(rr):
     gh = gaussian_heuristic(rr)
@@ -130,8 +132,8 @@ def lwe_kernel(arg0, params=None, seed=None):
     extra_dim4free = params.pop("bkz/extra_dim4free")
     jump = params.pop("bkz/jump")
     dim4free_fun = params.pop("bkz/dim4free_fun")
-    
-    
+
+
     pump_params = pop_prefixed_params("pump", params)
     if "dsvp" in pump_params:
         beta_pump = pump_params.pop("dsvp")
@@ -143,7 +145,7 @@ def lwe_kernel(arg0, params=None, seed=None):
     #     succ_prob = None
     # print(beta_pump)
     fpylll_crossover = params.pop("bkz/fpylll_crossover")
-    
+
     tours = params.pop("bkz/tours")
 
     # flow of the lwe solver
@@ -163,13 +165,13 @@ def lwe_kernel(arg0, params=None, seed=None):
     float_type = params.pop("float_type")
     max_jump = params.pop("max_jump")
     if(max_jump is None):
-        max_jump = 100    
+        max_jump = 100
     set_j1 = params.pop("set_j1")
     gen_strategy_only = params.pop("gen_strategy_only")
     max_RAM = params.pop("max_RAM")
     if(max_RAM is None):
         max_RAM = 1000
-    
+
     print("-------------------------")
     if(load_lwe == "lwe_instance"):
         A, c, q = load_lwe_instance(n=n, alpha=alpha)
@@ -177,9 +179,10 @@ def lwe_kernel(arg0, params=None, seed=None):
     if(load_lwe == "lwe_challenge" or load_lwe is None):
         A, c, q = load_lwe_challenge(n=n, alpha=alpha)
         print("Primal attack, LWE challenge n=%d, alpha=%.4f" % (n, alpha))
-    
-    
-    
+
+        # print(f"len(c): {len(c)}")
+        # print(c)
+
 
     if m is None:
         try:
@@ -204,15 +207,17 @@ def lwe_kernel(arg0, params=None, seed=None):
     target_norm = goal_margin * (alpha*q)**2 * m + 1
     # target_norm = max( target_norm, 0.98 * full_gh)
 
-    
+
     # B_=load_lwe_challenge_mid(n=n, alpha=alpha)
     # if B_ is not None:
     #     B = B_
-    # else: 
+    # else:
     #     B = primal_lattice_basis(A, c, q, m=m)
     B = primal_lattice_basis(A, c, q, m=m) #debug
-    
-    
+    Bsave = copy.deepcopy(B)
+    target = np.concatenate( [c[:m],[1]] )
+    print(f"B.shape: {B.nrows,B.ncols}")
+
 
     g6k = Siever(B, params, float_type = float_type)
     print("GSO precision: ", g6k.M.float_type)
@@ -234,7 +239,7 @@ def lwe_kernel(arg0, params=None, seed=None):
 
 
     log2_rr = [round((log2(g6k.M.get_r(i,i))/2.) - (log2(sigma)),5) for i in range(d)]
-    
+
     if(strategy_method == "enumbs"):
         enumbs = EnumBS(d,g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_enumbs = time.time()
@@ -244,7 +249,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         print("Cost for generate strategy through EnumBS: %.2f sec" %(time.time()-T0_enumbs))
         blocksizes = enumbs.get_strategy()
         target_slope = enumbs.get_target_slope()
-    
+
     if(strategy_method == "bssav1"):
         bssa = BSSA(d,"v1",g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_bssa = time.time()
@@ -252,7 +257,7 @@ def lwe_kernel(arg0, params=None, seed=None):
         sys.stdout.flush()
         print("Cost for generate strategy through BSSAv1: %.2f sec" %(time.time()-T0_bssa))
         blocksizes =bssa.get_strategy()
-        
+
     if(strategy_method == "bssav2"):
         bssa = BSSA(d,"v2",g6k.M.float_type,max_jump=max_jump, max_RAM = max_RAM)
         T0_bssa = time.time()
@@ -260,22 +265,22 @@ def lwe_kernel(arg0, params=None, seed=None):
         sys.stdout.flush()
         print("Cost for generate strategy through BSSAv2: %.2f sec" %(time.time()-T0_bssa))
         blocksizes =bssa.get_strategy()
-    
+
     if(strategy_method is None or blocksizes is None) :
         blocksizes = list(range(10, d)) + list(reversed(range(b-14, 60, -10))) + list(range(b - 12, b + 25, 2)) # noqa
         blocksizes = [(_,1,1) for _ in blocksizes[:10]]
         # blocksizes = []
 
-    
-    
+
+
     if(set_j1 == 1):
         blocksizes = [(blocksize, 1, tours) for (blocksize, _, tours) in blocksizes]
-    
-    print("Blocksize Strategy: ", end= "")    
+
+    print("Blocksize Strategy: ", end= "")
     print(blocksizes)
     print()
 
-    
+
     T0 = time.time()
     T0_BKZ = time.time()
 
@@ -283,7 +288,7 @@ def lwe_kernel(arg0, params=None, seed=None):
     # while( abs(basis_quality(g6k.M)["/"] - target_slope)> 0.001):
     if(gen_strategy_only is None or gen_strategy_only != 1):
         for S in blocksizes:
-            (blocksize, jump, tours) = S 
+            (blocksize, jump, tours) = S
             for tt in range(tours):
                 # BKZ tours
 
@@ -310,10 +315,10 @@ def lwe_kernel(arg0, params=None, seed=None):
                                         dim4free_fun=dim4free_fun,
                                         goal_r0=target_norm,
                                         pump_params=pump_params)
-                        
-                        
+
+
                 g6k.lll(0, g6k.full_n)
-                
+
                 #write the mid result of basis
                 alpha_ = int(alpha*1000)
                 filename = 'lwechallenge/%03d-%03d-midmat.txt' % (n, alpha_)
@@ -345,20 +350,24 @@ def lwe_kernel(arg0, params=None, seed=None):
                     fmt += ", memory cost = %3.2f GB "
                     print(fmt % (slope, g6k.M.get_r(0, 0), target_norm, T_BKZ, time.time() - T0, max_RAM))
                 sys.stdout.flush()
-                
-                
+
+
                 T0_BKZ = time.time()
 
                 if g6k.M.get_r(0, 0) <= target_norm: #or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1:
                     print("Finished! TT=%.2f sec" % (time.time() - T0))
                     print(g6k.M.B[0])
+                    sol = np.array( g6k.M.B[0] )
+                    sqnrm = sol@sol
+                    print(f"nrmsq: {sqnrm} |{sqnrm**0.5}")
+                    print(f"tar-sol: {target-sol}")
                     alpha_ = int(alpha*1000)
                     filename = 'lwechallenge/%03d-%03d-solution.txt' % (n, alpha_)
                     fn = open(filename, "w")
                     fn.write(str(g6k.M.B[0]))
                     fn.close()
                     return
-            
+
         if not (g6k.M.get_r(0, 0) <= target_norm ):#or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1):
             if(beta_pump is None):
                 rr = [g6k.M.get_r(i,i) for i in range(d)]
@@ -366,21 +375,21 @@ def lwe_kernel(arg0, params=None, seed=None):
                 #     beta_pump = pump_estimation(rr,q, alpha, succ_prob = succ_prob)
                 # else:
                 beta_pump = min(d, pump_estimation(rr,q, alpha)[1] + 1)
-                    
+
             n_max= 143
-            
+
             llb = d - beta_pump
             f = max(accs_2023_d4f(slope), beta_pump - n_max)
-            
+
             T0_pump = time.time()
             print("Without otf, would expect solution at pump_{%d, %d, %d},n_max = %d" % (llb, beta_pump , f, n_max)) # noqa
-                    
-            
+
+
             if verbose:
                 print()
                 print( "Starting svp pump_{%d, %d, %d}" % (llb, d-llb, f) ) # noqa
                 sys.stdout.flush()
-                        
+
 
             _, max_RAM_cost = pump(g6k, tracer, llb, d-llb, f, verbose=verbose, goal_r0=target_norm * (d - llb)/(1.*d),**pump_params)
 
@@ -391,11 +400,11 @@ def lwe_kernel(arg0, params=None, seed=None):
                 fmt = "slope: %.5f, T_pump = %.3f sec, RAM_pump = %.3f GB, walltime: %.3f sec"
                 print(fmt % (slope,T_pump, max_RAM_cost, time.time()-T0))
 
-                        
-            g6k.lll(0, g6k.full_n)
-                    
 
-            
+            g6k.lll(0, g6k.full_n)
+
+
+
             #write the result of basis after last pump
             alpha_ = int(alpha*1000)
             filename = 'lwechallenge/%03d-%03d-last-pump.txt' % (n, alpha_)
@@ -420,14 +429,25 @@ def lwe_kernel(arg0, params=None, seed=None):
         if g6k.M.get_r(0, 0) <= target_norm: #or g6k.M.B[0][-1] == 1 or g6k.M.B[0][-1] == -1:
             print("Finished! TT=%.2f sec" % (time.time() - T0))
             print(g6k.M.B[0])
+            print(g6k.M.B[0])
+            sol = np.array( g6k.M.B[0] )
+            sqnrm = sol@sol
+            print(f"nrmsq: {sqnrm} |{sqnrm**0.5}")
+            lol = target-sol
+            print(f"tar+sol: {target+sol}")
+            # G = GSO.Mat(Bsave, float_type="dd")
+            # G.update_gso()
+            # ans = G.babai( lol )
+            # print(f"ans: {ans}")
+
             alpha_ = int(alpha*1000)
             filename = 'lwechallenge/%03d-%03d-solution.txt' % (n, alpha_)
             fn = open(filename, "w")
             fn.write(str(g6k.M.B[0]))
             fn.close()
             return
-            
-            
+
+
         raise ValueError("No solution found.")
 
 
